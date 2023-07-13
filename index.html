@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel&family=Cinzel+Decorative:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+        <button id="collections_button">
+            <img id="favorite_image" src="favorite.svg" alt="" />
+        </button>
+        <div id="container" class="container">
+            <header>
+                <h1>Floss Conversion Calculator</h1>
+                <div class="selecting_manufacturer">
+                    <div>Convert from:</div>
+                    <select name="ConvertFrom" id="convert_from">
+                        <option value="DMC">DMC</option>
+                        <option value="Dimensions">Dimensions</option>
+                    </select>
+                    <div>To:</div>
+                    <select name="ConvertTo" id="convert_to">
+                        <option value="Dimensions">Dimensions</option>
+                        <option value="DMC">DMC</option>
+                    </select>
+                    <!-- <button>Convert</button> -->
+                </div>
+            </header>
+            <table id="conversion_table">
+                <thead>
+                    <tr>
+                        <th class="header">DMC</th>
+                        <th class="header"></th>
+                        <th class="header">DMC Color</th>
+                        <th class="header">Dimensions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="input">
+                            <input
+                                type="search"
+                                maxlength="5"
+                                placeholder="Enter the number"
+                                name="ConvertFromCode"
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="save_button" class="save_button">Save</button>
+        </div>
+        <script src="./script.js" type="module"></script>
+    </body>
+</html>

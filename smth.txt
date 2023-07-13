@@ -1,0 +1,717 @@
+
+
+<tr>
+    <td class="text-capitalize">
+        6121
+    </td>
+    <td>
+        744
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#FFE48B;border-style:solid;;color:#FFE48B;border-style:solid;">&nbsp;</span>  pale yellow
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        12296
+    </td>
+    <td>
+        745
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#fff1b2;border-style:solid;;color:#fff1b2;border-style:solid;">&nbsp;</span>  lt pale yellow
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6122
+    </td>
+    <td>
+        745
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#fff1b2;border-style:solid;;color:#fff1b2;border-style:solid;">&nbsp;</span>  lt pale yellow
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        12275
+    </td>
+    <td>
+        746
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#FFFFE1;border-style:solid;;color:#FFFFE1;border-style:solid;">&nbsp;</span>  off white
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        15387
+    </td>
+    <td>
+        746
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#ffffe1;border-style:solid;;color:#ffffe1;border-style:solid;">&nbsp;</span>  off white
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6746
+    </td>
+    <td>
+        746
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#FFFFE1;border-style:solid;;color:#FFFFE1;border-style:solid;">&nbsp;</span>  off white
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17053
+    </td>
+    <td>
+        747
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#D3FFF9;border-style:solid;;color:#D3FFF9;border-style:solid;">&nbsp;</span>  vy lt sky blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6754
+    </td>
+    <td>
+        754
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#f6c4b7;border-style:solid;;color:#f6c4b7;border-style:solid;">&nbsp;</span>  lt peach
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        12337
+    </td>
+    <td>
+        758
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#EDA394;border-style:solid;;color:#EDA394;border-style:solid;">&nbsp;</span>  vy lt terra cotta
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6042
+    </td>
+    <td>
+        758
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#eda394;border-style:solid;;color:#eda394;border-style:solid;">&nbsp;</span>  vy lt terra cotta
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6758
+    </td>
+    <td>
+        758
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#eda394;border-style:solid;;color:#eda394;border-style:solid;">&nbsp;</span>  vy lt terra cotta
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13069
+    </td>
+    <td>
+        760
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#E6858F;border-style:solid;;color:#E6858F;border-style:solid;">&nbsp;</span>  salmon
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13241
+    </td>
+    <td>
+        760
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#E6858F;border-style:solid;;color:#E6858F;border-style:solid;">&nbsp;</span>  salmon
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6760
+    </td>
+    <td>
+        760
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#E6858F;border-style:solid;;color:#E6858F;border-style:solid;">&nbsp;</span>  salmon
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13068
+    </td>
+    <td>
+        761
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#F2ACAC;border-style:solid;;color:#F2ACAC;border-style:solid;">&nbsp;</span>  lt salmon
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        18510
+    </td>
+    <td>
+        762
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#E2E2E7;border-style:solid;;color:#E2E2E7;border-style:solid;">&nbsp;</span>  vy lt pearl gray
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6082
+    </td>
+    <td>
+        762
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#E2E2E7;border-style:solid;;color:#E2E2E7;border-style:solid;">&nbsp;</span>  vy lt pearl gray
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        16250
+    </td>
+    <td>
+        772
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#E4FEB0;border-style:solid;;color:#E4FEB0;border-style:solid;">&nbsp;</span>  vy lt yellow green
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6052
+    </td>
+    <td>
+        772
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#e4feb0;border-style:solid;;color:#e4feb0;border-style:solid;">&nbsp;</span>  vy lt yellow green
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17031
+    </td>
+    <td>
+        775
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#D7EBF2;border-style:solid;;color:#D7EBF2;border-style:solid;">&nbsp;</span>  vy lt baby blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17976
+    </td>
+    <td>
+        775
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#D7EBF2;border-style:solid;;color:#D7EBF2;border-style:solid;">&nbsp;</span>  vy lt baby blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13281
+    </td>
+    <td>
+        776
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#F3949F;border-style:solid;;color:#F3949F;border-style:solid;">&nbsp;</span>  md pink
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6026
+    </td>
+    <td>
+        776
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#F3949F;border-style:solid;;color:#F3949F;border-style:solid;">&nbsp;</span>  md pink
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13065
+    </td>
+    <td>
+        777
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#810B28;border-style:solid;;color:#810B28;border-style:solid;">&nbsp;</span>  vy dk Raspberry
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13060
+    </td>
+    <td>
+        778
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#DDADB6;border-style:solid;;color:#DDADB6;border-style:solid;">&nbsp;</span>  vy lt antique mauve
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        15308
+    </td>
+    <td>
+        780
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#af5e00;border-style:solid;;color:#af5e00;border-style:solid;">&nbsp;</span>  ul vy dk topaz
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        15309
+    </td>
+    <td>
+        780
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#af5e00;border-style:solid;;color:#af5e00;border-style:solid;">&nbsp;</span>  ul vy dk topaz
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6111
+    </td>
+    <td>
+        781
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#C77E00;border-style:solid;;color:#C77E00;border-style:solid;">&nbsp;</span>  vy dk topaz
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        15307
+    </td>
+    <td>
+        783
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#DA9605;border-style:solid;;color:#DA9605;border-style:solid;">&nbsp;</span>  md topaz
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6113
+    </td>
+    <td>
+        783
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#DA9605;border-style:solid;;color:#DA9605;border-style:solid;">&nbsp;</span>  md topaz
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17024
+    </td>
+    <td>
+        791
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#363562;border-style:solid;;color:#363562;border-style:solid;">&nbsp;</span>  vy dk cornflower blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17150
+    </td>
+    <td>
+        792
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#4B497D;border-style:solid;;color:#4B497D;border-style:solid;">&nbsp;</span>  dk cornflower blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6017
+    </td>
+    <td>
+        794
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#8e9dc6;border-style:solid;;color:#8e9dc6;border-style:solid;">&nbsp;</span>  lt cornflower blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17100
+    </td>
+    <td>
+        796
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#0F2075;border-style:solid;;color:#0F2075;border-style:solid;">&nbsp;</span>  dk royal blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6214.0
+    </td>
+    <td>
+        796
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#0f2075;border-style:solid;;color:#0f2075;border-style:solid;">&nbsp;</span>  dk royal blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6796
+    </td>
+    <td>
+        796
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#0f2075;border-style:solid;;color:#0f2075;border-style:solid;">&nbsp;</span>  dk royal blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17023
+    </td>
+    <td>
+        797
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#223F88;border-style:solid;;color:#223F88;border-style:solid;">&nbsp;</span>  royal blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17022
+    </td>
+    <td>
+        798
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#3E5EA0;border-style:solid;;color:#3E5EA0;border-style:solid;">&nbsp;</span>  dk delft blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6798
+    </td>
+    <td>
+        798
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#3E5EA0;border-style:solid;;color:#3E5EA0;border-style:solid;">&nbsp;</span>  dk delft blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17030
+    </td>
+    <td>
+        799
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#5b81b5;border-style:solid;;color:#5b81b5;border-style:solid;">&nbsp;</span>  md delft blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6016
+    </td>
+    <td>
+        799
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#5B81B5;border-style:solid;;color:#5B81B5;border-style:solid;">&nbsp;</span>  md delft blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        7030
+    </td>
+    <td>
+        799
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#5b81b5;border-style:solid;;color:#5b81b5;border-style:solid;">&nbsp;</span>  md delft blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6800
+    </td>
+    <td>
+        800
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#adcbe1;border-style:solid;;color:#adcbe1;border-style:solid;">&nbsp;</span>  pale delft blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        15360
+    </td>
+    <td>
+        801
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#653D0F;border-style:solid;;color:#653D0F;border-style:solid;">&nbsp;</span>  dk coffee brown
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        15475
+    </td>
+    <td>
+        801
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#653D0F;border-style:solid;;color:#653D0F;border-style:solid;">&nbsp;</span>  dk coffee brown
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6093
+    </td>
+    <td>
+        801
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#653D0F;border-style:solid;;color:#653D0F;border-style:solid;">&nbsp;</span>  dk coffee brown
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6012
+    </td>
+    <td>
+        803
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#1E4669;border-style:solid;;color:#1E4669;border-style:solid;">&nbsp;</span>  ul vy dk baby blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17168
+    </td>
+    <td>
+        807
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#5F9EA5;border-style:solid;;color:#5F9EA5;border-style:solid;">&nbsp;</span>  peacock blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17021
+    </td>
+    <td>
+        809
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#82a8c9;border-style:solid;;color:#82a8c9;border-style:solid;">&nbsp;</span>  delft blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6017
+    </td>
+    <td>
+        809
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#82A8C9;border-style:solid;;color:#82A8C9;border-style:solid;">&nbsp;</span>  delft blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        11814
+    </td>
+    <td>
+        814
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#79001c;border-style:solid;;color:#79001c;border-style:solid;">&nbsp;</span>  dk garnet
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6814
+    </td>
+    <td>
+        814
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#79001C;border-style:solid;;color:#79001C;border-style:solid;">&nbsp;</span>  dk garnet
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        11814
+    </td>
+    <td>
+        815
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#840720;border-style:solid;;color:#840720;border-style:solid;">&nbsp;</span>  md garnet
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13073
+    </td>
+    <td>
+        815
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#840720;border-style:solid;;color:#840720;border-style:solid;">&nbsp;</span>  md garnet
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13013
+    </td>
+    <td>
+        816
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#940B24;border-style:solid;;color:#940B24;border-style:solid;">&nbsp;</span>  garnet
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13072
+    </td>
+    <td>
+        816
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#940B24;border-style:solid;;color:#940B24;border-style:solid;">&nbsp;</span>  garnet
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6019
+    </td>
+    <td>
+        816
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#940B24;border-style:solid;;color:#940B24;border-style:solid;">&nbsp;</span>  garnet
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        12335
+    </td>
+    <td>
+        817
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#BF1A23;border-style:solid;;color:#BF1A23;border-style:solid;">&nbsp;</span>  vy dk coral red
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6963
+    </td>
+    <td>
+        818
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#FFCECE;border-style:solid;;color:#FFCECE;border-style:solid;">&nbsp;</span>  baby pink
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        13280
+    </td>
+    <td>
+        819
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#FFE1E1;border-style:solid;;color:#FFE1E1;border-style:solid;">&nbsp;</span>  lt baby pink
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        6819
+    </td>
+    <td>
+        819
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#FFE1E1;border-style:solid;;color:#FFE1E1;border-style:solid;">&nbsp;</span>  lt baby pink
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        15830
+    </td>
+    <td>
+        822
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#f3ecdc;border-style:solid;;color:#f3ecdc;border-style:solid;">&nbsp;</span>  lt beige gray
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17160
+    </td>
+    <td>
+        823
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#071F3A;border-style:solid;;color:#071F3A;border-style:solid;">&nbsp;</span>  dk navy blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17982
+    </td>
+    <td>
+        823
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#071F3A;border-style:solid;;color:#071F3A;border-style:solid;">&nbsp;</span>  dk navy blue
+    </td>
+</tr>
+<tr>
+    <td class="text-capitalize">
+        17182
+    </td>
+    <td>
+        824
+    </td>
+    <td style="text-transform: capitalize">
+        <span class="Swatch" style="background-color:#224271;border-style:solid;;color:#224271;border-style:solid;">&nbsp;</span>  vy dk blue
+    </td>
+</tr>

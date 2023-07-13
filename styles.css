@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #e8ddda;
+    align-items: center;
+    padding: 100px 25px 0px 25px;
+}
+
+.container {
+    background-color: #f5ece9;
+    border-radius: 25px;
+    display: flex;
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container {
+    min-height: 500px;
+    min-width: 700px;
+    width: 55%;
+}
+
+header {
+    height: max-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+h1 {
+    font-family: "Cinzel Decorative", cursive;
+    color: rgb(87, 43, 57);
+    padding-top: 35px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.selecting_manufacturer {
+    font-family: "Cinzel Decorative", cursive;
+    font-weight: bold;
+    color: #2f2f2f;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 15px;
+}
+
+input,
+select,
+button,
+li {
+    font-family: "Cinzel", serif;
+    font-size: 16px;
+}
+
+input {
+    text-align: center;
+}
+
+span {
+    display: flex;
+    border-radius: 5px;
+    width: 60px;
+    min-height: 22px;
+}
+
+.color__display {
+    display: flex;
+    justify-content: center;
+}
+
+#conversion_table {
+    display: table;
+    width: 100%;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+thead {
+    background-color: rgb(87, 43, 57, 0.9);
+    color: #f5ece9;
+    letter-spacing: 1px;
+}
+
+tbody tr {
+    border-bottom: 3px solid rgb(87, 43, 57);
+}
+
+th,
+td {
+    display: table-cell;
+    padding: 15px 0;
+}
+
+button:active {
+    background-color: rgb(87, 43, 57);
+}
+
+.save_button {
+    background-color: rgb(87, 43, 57, 0.9);
+    color: rgb(245, 236, 233);
+    letter-spacing: 1px;
+    padding: 15px 0;
+    width: 160px;
+    align-self: center;
+    border: none;
+    border-radius: 15px;
+}
+
+@keyframes highlight {
+    0% {
+        background-color: rgb(245, 236, 233);
+    }
+    50% {
+        background-color: rgb(255, 255, 255);
+    }
+    100% {
+        background-color: rgb(245, 236, 233);
+    }
+}
+
+.animate-highlight {
+    animation: highlight 1s ease 0s 1 normal forwards;
+}
+
+#saving_window {
+    position: absolute;
+    padding: 40px;
+    height: 250px;
+    width: 60%;
+    max-width: 500px;
+    background-color: #2f2f2f;
+    border-radius: 20px;
+    display: flex;
+    /* display: none; */
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    font-family: "Cinzel", serif;
+    font-size: 16px;
+}
+
+.close_button {
+    background-color: rgb(87, 43, 57, 0.9);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5ece9;
+}
+
+#enter_name_input {
+    width: 80%;
+}
+
+#arrange_checkbox_container {
+    display: flex;
+    color: #f5ece9;
+}
+
+#arrange_checkbox {
+    margin-right: 10px;
+}
+
+#collections_button {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: rgba(87, 43, 57, 0.9);
+    border-radius: 25%;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+#collections_button:active {
+    background-color: rgb(87, 43, 57);
+}
+
+#favorite_image {
+    width: 35px;
+    filter: invert(95%) sepia(7%) saturate(252%) hue-rotate(325deg)
+        brightness(94%) contrast(92%);
+}
+
+@keyframes slide-entrance {
+    0% {
+        opacity: 0;
+        transform: translateX(-250px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-entrance {
+    animation: slide-entrance 1s ease 0s 1 normal forwards;
+}
+
+@keyframes slide-exit {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-250px);
+    }
+}
+
+.slide-exit {
+    animation: slide-exit 1s ease 0s 1 normal forwards;
+}
+
+#collections_container {
+    position: absolute;
+    left: 25px;
+    height: 500px;
+    width: 20%;
+    margin-right: 25px;
+    display: block;
+}
+
+li {
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-family: "Cinzel", serif;
+    color: #2f2f2f;
+    list-style: none;
+    border-bottom: 3px solid rgb(87, 43, 57);
+}
+
+li:hover {
+    background-color: #e8ddda;
+}
