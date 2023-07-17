@@ -1,4 +1,5 @@
 import { Collection } from "./collection.js";
+import { conversionContainer } from "./conversion_container.js";
 import { savedCollections } from "./saved_collections.js";
 
 export const savingWindow = {
@@ -22,7 +23,7 @@ export const savingWindow = {
             Arrange the colors by number
         </div>
         <button class="button" type="submit">
-            <img class="image favorite_image" src="favorite.svg" alt="" />
+            <img class="image favorite_image" src="images/favorite.svg" alt="" />
         </button>`,
 
     render() {
@@ -53,7 +54,9 @@ export const savingWindow = {
             if (saveButton) {
                 const collection = new Collection(
                     enterNameInput.value,
-                    listOfColorsToSave
+                    listOfColorsToSave,
+                    conversionContainer.convertFrom,
+                    conversionContainer.convertTo
                 );
 
                 if (arrangeCheckbox.checked) {

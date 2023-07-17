@@ -30,6 +30,12 @@ body {
     width: 80%;
 }
 
+#convert-from-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #collection_container {
     position: relative;
 }
@@ -94,7 +100,7 @@ span {
     justify-content: center;
 }
 
-#conversion_table {
+.conversion_table {
     display: table;
     width: 100%;
     text-align: center;
@@ -208,6 +214,13 @@ td {
     justify-content: center;
 }
 
+.sort_button {
+    height: 25px;
+    width: 25px;
+    background: transparent;
+    border: none;
+}
+
 #collections_button {
     position: absolute;
     top: 25px;
@@ -218,6 +231,13 @@ td {
 }
 
 /* images */
+
+.sort_image {
+    width: 100%;
+    filter: invert(95%) sepia(7%) saturate(252%) hue-rotate(325deg)
+        brightness(94%) contrast(92%);
+    visibility: hidden;
+}
 
 .favorite_image {
     margin: 4px 2px 0;

@@ -41,6 +41,12 @@ export const conversionTable = {
         this.DOMElement.appendChild(tableBody);
     },
 
+    addEventListenerToTableHeader() {
+        const tableHeader = document.querySelector("thead");
+
+        tableHeader.addEventListener("click", function (event) {});
+    },
+
     addEventListenerToTableBody(findedColors) {
         const tableBody = document.querySelector("tbody");
 
