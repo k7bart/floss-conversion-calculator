@@ -167,15 +167,6 @@ td {
     width: 80%;
 }
 
-#arrange_checkbox_container {
-    display: flex;
-    color: rgb(245, 236, 233);
-}
-
-#arrange_checkbox {
-    margin-right: 10px;
-}
-
 /* buttons */
 
 .button {
