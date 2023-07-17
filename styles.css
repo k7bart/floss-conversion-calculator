@@ -9,11 +9,10 @@ html {
 }
 
 body {
+    height: 100%;
+    padding: 15px;
     display: flex;
-    justify-content: center;
-    background-color: #e8ddda;
-    align-items: center;
-    padding: 100px 25px 0px 25px;
+    background-color: rgb(232, 221, 218);
 }
 
 .container {
@@ -25,10 +24,33 @@ body {
     align-items: center;
 }
 
-#container {
-    min-height: 500px;
+#convert_container,
+#collection_container {
     min-width: 700px;
-    width: 55%;
+    width: 80%;
+}
+
+#collection_container {
+    position: relative;
+}
+
+#saved_collections_container {
+    margin-right: 25px;
+    display: block;
+}
+
+#buttons_container {
+    display: flex;
+}
+
+#selects_container {
+    font-family: "Cinzel Decorative", cursive;
+    font-weight: bold;
+    color: #2f2f2f;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 15px;
 }
 
 header {
@@ -46,16 +68,6 @@ h1 {
     padding-top: 35px;
     padding-bottom: 30px;
     text-align: center;
-}
-
-.selecting_manufacturer {
-    font-family: "Cinzel Decorative", cursive;
-    font-weight: bold;
-    color: #2f2f2f;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    padding-bottom: 15px;
 }
 
 input,
@@ -107,21 +119,6 @@ td {
     padding: 15px 0;
 }
 
-button:active {
-    background-color: rgb(87, 43, 57);
-}
-
-.save_button {
-    background-color: rgb(87, 43, 57, 0.9);
-    color: rgb(245, 236, 233);
-    letter-spacing: 1px;
-    padding: 15px 0;
-    width: 160px;
-    align-self: center;
-    border: none;
-    border-radius: 15px;
-}
-
 @keyframes highlight {
     0% {
         background-color: rgb(245, 236, 233);
@@ -153,10 +150,51 @@ button:active {
     flex-direction: column;
     font-family: "Cinzel", serif;
     font-size: 16px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+#enter_name_input {
+    width: 80%;
+}
+
+#arrange_checkbox_container {
+    display: flex;
+    color: rgb(245, 236, 233);
+}
+
+#arrange_checkbox {
+    margin-right: 10px;
+}
+
+/* buttons */
+
+.button {
+    background-color: rgb(87, 43, 57, 0.8);
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 50%;
+}
+
+.button:hover,
+.close_button:hover {
+    background-color: rgb(87, 43, 57, 0.9);
+}
+
+.button:active,
+.close_button:active {
+    background-color: rgb(87, 43, 57);
 }
 
 .close_button {
-    background-color: rgb(87, 43, 57, 0.9);
+    background-color: rgb(87, 43, 57, 0.8);
+    color: rgb(245, 236, 233);
     width: 30px;
     height: 30px;
     border: none;
@@ -168,86 +206,30 @@ button:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f5ece9;
-}
-
-#enter_name_input {
-    width: 80%;
-}
-
-#arrange_checkbox_container {
-    display: flex;
-    color: #f5ece9;
-}
-
-#arrange_checkbox {
-    margin-right: 10px;
 }
 
 #collections_button {
-    height: 50px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: rgba(87, 43, 57, 0.9);
-    border-radius: 25%;
     position: absolute;
     top: 25px;
     left: 25px;
 }
-
 #collections_button:active {
     background-color: rgb(87, 43, 57);
 }
 
-#favorite_image {
+/* images */
+
+.favorite_image {
+    margin: 4px 2px 0;
+}
+
+.image {
     width: 35px;
     filter: invert(95%) sepia(7%) saturate(252%) hue-rotate(325deg)
         brightness(94%) contrast(92%);
 }
 
-@keyframes slide-entrance {
-    0% {
-        opacity: 0;
-        transform: translateX(-250px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.slide-entrance {
-    animation: slide-entrance 1s ease 0s 1 normal forwards;
-}
-
-@keyframes slide-exit {
-    0% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateX(-250px);
-    }
-}
-
-.slide-exit {
-    animation: slide-exit 1s ease 0s 1 normal forwards;
-}
-
-#collections_container {
-    position: absolute;
-    left: 25px;
-    height: 500px;
-    width: 20%;
-    margin-right: 25px;
-    display: block;
-}
+/* list items */
 
 li {
     width: 100%;
@@ -258,7 +240,6 @@ li {
     list-style: none;
     border-bottom: 3px solid rgb(87, 43, 57);
 }
-
 li:hover {
-    background-color: #e8ddda;
+    background-color: rgb(232, 221, 218, 0.3);
 }

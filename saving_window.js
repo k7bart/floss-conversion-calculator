@@ -1,4 +1,5 @@
 import { Collection } from "./collection.js";
+import { savedCollections } from "./saved_collections.js";
 
 export const savingWindow = {
     innerHTML: `
@@ -20,7 +21,9 @@ export const savingWindow = {
             />
             Arrange the colors by number
         </div>
-        <button class="save_button" type="submit">Save</button>`,
+        <button class="button" type="submit">
+            <img class="image favorite_image" src="favorite.svg" alt="" />
+        </button>`,
 
     render() {
         const savingWindowElement = document.createElement("div");
@@ -41,21 +44,26 @@ export const savingWindow = {
                 savingWindowElement.querySelector("#arrange_checkbox");
 
             const closeButton = event.target.closest(".close_button");
-            const saveButton = event.target.closest(".save_button");
+            const saveButton = event.target.closest(".button");
 
             if (!closeButton && !saveButton) return;
 
             if (closeButton) return savingWindowElement.remove();
 
             if (saveButton) {
+                const collection = new Collection(
+                    enterNameInput.value,
+                    listOfColorsToSave
+                );
+
                 if (arrangeCheckbox.checked) {
                     listOfColorsToSave.sort(
                         (a, b) => a.DMCNumber - b.DMCNumber
                     );
                 }
-                savedLists.push(
-                    new Collection(enterNameInput.value, listOfColorsToSave)
-                );
+                savedLists.push(collection);
+
+                savedCollections.render(collection);
 
                 savingWindowElement.remove();
                 return;

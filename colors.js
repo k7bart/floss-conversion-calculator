@@ -1,3 +1,5 @@
+import { conversionContainer } from "./conversion_container.js";
+
 class Color {
     constructor(colorName, dimensionsNumber, DMCNumber, colorDispley) {
         this.colorName = colorName;
@@ -6,13 +8,25 @@ class Color {
         this.colorDispley = colorDispley;
     }
 
-    render() {
+    render(numberForSearch) {
+        // can make it better but not sure about another manufactorer options
+        let convertFromCode;
+        let convertToCode;
+
+        conversionContainer.convertFrom === "DMC"
+            ? (convertFromCode = this.DMCNumber)
+            : (convertFromCode = numberForSearch);
+
+        conversionContainer.convertTo === "DMC"
+            ? (convertToCode = this.DMCNumber)
+            : (convertToCode = this.dimensionsNumber);
+
         return ` 
         <tr>
-            <td><input type="search" maxlength="5" value="${this.DMCNumber}" name="ConvertFromCode"></td>
+            <td><input type="search" maxlength="20" value="${convertFromCode}" name="ConvertFromCode"></td>
             <td class="color__display"><span style="background: ${this.colorDispley}"></span></td>
             <td>${this.colorName}</td>
-            <td>${this.dimensionsNumber}</td>
+            <td>${convertToCode}</td>
         </tr>
         `;
     }
@@ -21,7 +35,7 @@ class Color {
 export const arrayOfColors = [
     new Color("white", [11001, 6149], 0, "#FAFAFA"),
     new Color("ecru", [6098, 6115], 0, "#F5F0EC"),
-    new Color("ul vy dk dustry rose", [13065, 13065], 150, "#A8024A"),
+    new Color("ul vy dk dustry rose", [13065], 150, "#A8024A"),
     new Color("md dk blue violet", [6250], 155, "#948DB3"),
     new Color("vy lt cornflower blue", [17005], 157, "#B7C4E4"),
     new Color("md vy dk cornflower blue", [17150], 158, "#403D6D"),
@@ -32,7 +46,7 @@ export const arrayOfColors = [
     new Color("vy dk shell pink", [60221], 221, "#9A3D43"),
     new Color("lt shell pink", [60223], 223, "#D58582"),
     new Color("vy lt shell pink", [13240], 224, "#E9B1A8"),
-    new Color("ul vy lt shell pink", [13239, 13239], 225, "#ffd5d5"),
+    new Color("ul vy lt shell pink", [13239], 225, "#ffd5d5"),
     new Color("vy dk mahogany", [15470, 6108], 300, "#6d2d00"),
     new Color("md mahogany", [12238, 6109], 301, "#af5b2a"),
     new Color("md red", [13019], 304, "#b31e32"),

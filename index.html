@@ -19,49 +19,31 @@
         <link rel="stylesheet" href="./styles.css" />
     </head>
     <body>
-        <button id="collections_button">
-            <img id="favorite_image" src="favorite.svg" alt="" />
-        </button>
-        <div id="container" class="container">
+        <div id="saved_collections_container" class="container">
+            <h1>Saved Collections</h1>
+            <ul></ul>
+        </div>
+        <div id="convert_container" class="container">
             <header>
                 <h1>Floss Conversion Calculator</h1>
-                <div class="selecting_manufacturer">
+                <div id="selects_container">
                     <div>Convert from:</div>
-                    <select name="ConvertFrom" id="convert_from">
-                        <option value="DMC">DMC</option>
+                    <select name="ConvertFrom" id="select_convert_from">
+                        <option value="DMC" selected>DMC</option>
                         <option value="Dimensions">Dimensions</option>
                     </select>
                     <div>To:</div>
-                    <select name="ConvertTo" id="convert_to">
-                        <option value="Dimensions">Dimensions</option>
+                    <select name="ConvertTo" id="select_convert_to">
+                        <option value="Dimensions" selected>Dimensions</option>
                         <option value="DMC">DMC</option>
                     </select>
                     <!-- <button>Convert</button> -->
                 </div>
             </header>
-            <table id="conversion_table">
-                <thead>
-                    <tr>
-                        <th class="header">DMC</th>
-                        <th class="header"></th>
-                        <th class="header">DMC Color</th>
-                        <th class="header">Dimensions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="input">
-                            <input
-                                type="search"
-                                maxlength="5"
-                                placeholder="Enter the number"
-                                name="ConvertFromCode"
-                            />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button id="save_button" class="save_button">Save</button>
+            <table id="conversion_table"></table>
+            <button id="save_button" class="button">
+                <img class="image favorite_image" src="favorite.svg" alt="" />
+            </button>
         </div>
         <script src="./script.js" type="module"></script>
     </body>
