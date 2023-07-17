@@ -36,12 +36,13 @@ export class Collection {
         document.body.appendChild(collectionContainer);
         renderHeader(this.convertFrom, this.convertTo);
         renderBody(this.listOfColors);
-
-        addEventListenerToCollection(collectionContainer);
-        addEventListenerToTableHeader();
-        addEventListenerToSortButton();
-
         return;
+    }
+
+    addEventListeners() {
+        addEventListenerToTableHeader();
+        addEventListenerToSortButton(this.listOfColors, this.convertFrom);
+        addEventListenerToCloseButton();
     }
 }
 
@@ -68,15 +69,18 @@ function renderHeader(convertFrom, convertTo) {
 
 function renderBody(listOfColors) {
     const table = document.getElementById("saved_collection_table");
-    const tableBodyInnerHTML = listOfColors.reduce(
-        (html, color) => html + color.render(),
+
+    let tableBody = document.querySelector("#saved_collection_table tbody");
+    if (!tableBody) tableBody = document.createElement("tbody");
+
+    tableBody.innerHTML = listOfColors.reduce(
+        (html, color) => html + color.render(color.findedNumber),
         ""
     );
 
-    const tableBody = document.createElement("tbody");
-    tableBody.innerHTML = tableBodyInnerHTML;
-
     table.appendChild(tableBody);
+
+    return;
 }
 
 function addEventListenerToTableHeader() {
@@ -95,16 +99,33 @@ function addEventListenerToTableHeader() {
     }
 }
 
-function addEventListenerToSortButton() {
+function addEventListenerToSortButton(listOfColors, convertFrom) {
     const sortButton = document.querySelector(".sort_button");
-    const currentSortType = {};
-    const sortTypes = [];
 
-    sortButton.addEventListener("click", function (event) {
-        if (event.type === "click") {
-            console.log("Click event triggered");
-            return;
-        }
+    const sortTypes = [
+        {
+            type: "smaller to larger",
+            wayToImage: "images/arrow_down.svg",
+        },
+        {
+            type: "larger to smaller",
+            wayToImage: "images/arrow_up.svg",
+        },
+    ];
+
+    if (convertFrom === "DMC") convertFrom = "DMCNumber";
+    if (convertFrom === "Dimensions") convertFrom = "dimensionsNumber";
+
+    sortButton.addEventListener("click", function () {
+        let sortedListOfColors = listOfColors.slice().sort(function (a, b) {
+            return a[convertFrom] - b[convertFrom];
+        });
+
+        renderBody(sortedListOfColors);
+
+        sortButton
+            .querySelector("img")
+            .setAttribute("src", "images/arrow_up.svg");
     });
 }
 
@@ -113,26 +134,11 @@ function addEventListenerToCloseButton() {
     const closeButton = collectionContainer.querySelector(".close_button");
 
     closeButton.addEventListener("click", function (event) {
-        const collection = findCollectionByName(collectionContainer);
-        collection.remove(collectionContainer);
+        remove(collectionContainer);
     });
 }
 
-// function findCollectionByName(collectionContainer) {
-//     const collectionName = collectionContainer.querySelector("h1").innerText;
-//     return savedCollections.arrayOfCollections.find(
-//         (collection) => collection.name === collectionName
-//     );
-// }
-
-// function remove(collectionContainer) {
-//     const collection = findCollectionByName(collectionContainer);
-//     collection.isRendered = false;
-//     collectionContainer.remove();
-//     document.getElementById("convert_container").style.display = "flex";
-// }
-
-function remove(collectionContainer) {
+export function remove(collectionContainer) {
     const collectionName = collectionContainer.querySelector("h1").innerText;
     const collection = savedCollections.arrayOfCollections.find(
         (collection) => collection.name === collectionName
