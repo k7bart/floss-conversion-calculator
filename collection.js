@@ -55,7 +55,10 @@ function renderHeader(convertFrom, convertTo) {
             <div id="convert-from-container">
                 ${convertFrom} 
                 <button class="sort_button">
-                    <img class="sort_image" src="images/arrow_down.svg" alt="Arrow down" />
+                    <div id="images_container">
+                        <img class="sort_image" src="images/list.svg" alt="" />
+                        <img class="arrow_image" src="images/double_arrow.svg" alt=""/>
+                    </div>
                 </button>
             </div>
         </th>
@@ -74,7 +77,7 @@ function renderBody(listOfColors) {
     if (!tableBody) tableBody = document.createElement("tbody");
 
     tableBody.innerHTML = listOfColors.reduce(
-        (html, color) => html + color.render(color.findedNumber),
+        (html, color) => html + color.render(color.searchedNumber),
         ""
     );
 
@@ -84,48 +87,83 @@ function renderBody(listOfColors) {
 }
 
 function addEventListenerToTableHeader() {
+    const imagesContainer = document.getElementById("images_container");
     const tableHeaderConvertTo = document.getElementById(
         "table_header_convert_to"
     );
-    const sortImage = tableHeaderConvertTo.querySelector("img");
 
     tableHeaderConvertTo.addEventListener("mouseenter", handleEvent);
     tableHeaderConvertTo.addEventListener("mouseleave", handleEvent);
 
     function handleEvent(event) {
         event.type === "mouseenter"
-            ? (sortImage.style.visibility = "visible")
-            : (sortImage.style.visibility = "hidden");
+            ? (imagesContainer.style.visibility = "visible")
+            : (imagesContainer.style.visibility = "hidden");
     }
 }
 
 function addEventListenerToSortButton(listOfColors, convertFrom) {
     const sortButton = document.querySelector(".sort_button");
+    const imagesContainer = document.getElementById("images_container");
 
-    const sortTypes = [
-        {
-            type: "smaller to larger",
-            wayToImage: "images/arrow_down.svg",
+    const sortTypes = {
+        default: {
+            images: `                        
+            <img class="sort_image" src="images/list.svg" alt="" />
+            <img class="arrow_image" src="images/double_arrow.svg" alt=""/>`,
         },
-        {
-            type: "larger to smaller",
-            wayToImage: "images/arrow_up.svg",
+        smallerToLarger: {
+            images: `                        
+            <img id="rotated_sort_image" class="sort_image" src="images/sort.svg" alt="" />
+            <img class="arrow_image" src="images/arrow.svg" alt=""/>`,
+            sort() {
+                let sortedList;
+                sortedList = listOfColors.slice().sort(function (a, b) {
+                    return a[convertFrom] - b[convertFrom];
+                });
+                return sortedList;
+            },
         },
-    ];
+        largerToSmaller: {
+            images: `                        
+            <img class="sort_image" src="images/sort.svg" alt="" />
+            <img id="arrow_down_image" class="arrow_image" src="images/arrow.svg" alt=""/>`,
+            sort() {
+                let sortedList;
+                sortedList = listOfColors.slice().sort(function (a, b) {
+                    return b[convertFrom] - a[convertFrom];
+                });
+                return sortedList;
+            },
+        },
+    };
 
     if (convertFrom === "DMC") convertFrom = "DMCNumber";
-    if (convertFrom === "Dimensions") convertFrom = "dimensionsNumber";
+    if (convertFrom === "Dimensions") convertFrom = "searchedNumber";
+    let nextSortType = sortTypes.smallerToLarger;
+    let sortedListOfColors;
 
     sortButton.addEventListener("click", function () {
-        let sortedListOfColors = listOfColors.slice().sort(function (a, b) {
-            return a[convertFrom] - b[convertFrom];
-        });
-
-        renderBody(sortedListOfColors);
-
-        sortButton
-            .querySelector("img")
-            .setAttribute("src", "images/arrow_up.svg");
+        switch (nextSortType) {
+            case sortTypes.smallerToLarger:
+                sortedListOfColors = sortTypes.smallerToLarger.sort();
+                renderBody(sortedListOfColors);
+                imagesContainer.innerHTML = sortTypes.smallerToLarger.images;
+                nextSortType = sortTypes.largerToSmaller;
+                break;
+            case sortTypes.largerToSmaller:
+                sortedListOfColors = sortTypes.largerToSmaller.sort();
+                renderBody(sortedListOfColors);
+                imagesContainer.innerHTML = sortTypes.largerToSmaller.images;
+                nextSortType = "default";
+                break;
+            default:
+                sortedListOfColors = sortTypes.smallerToLarger.sort();
+                renderBody(listOfColors);
+                imagesContainer.innerHTML = sortTypes.default.images;
+                nextSortType = sortTypes.smallerToLarger;
+                break;
+        }
     });
 }
 

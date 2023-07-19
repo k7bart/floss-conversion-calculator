@@ -86,20 +86,12 @@ export const conversionTable = {
             }
 
             if (conversionContainer.convertFrom === "Dimensions") {
-                for (let color of arrayOfColors) {
-                    for (let number of color.dimensionsNumber) {
-                        if (number === numberForSearch) {
-                            findedColor = color;
-                            console.log(findedColor);
-                        }
-                    }
-                }
-
-                if (!findedColor) return;
+                findedColor = findColorByDimensionsNumber(numberForSearch);
             }
             findedColor.position = findedColors.length; // come up with something else
             findedColors.push(findedColor);
-            tableRowWithActiveInput.innerHTML =
+
+            tableRowWithActiveInput.innerHTML = // відмалювали у рядок зі знайденим Кольором у пошуку
                 findedColor.render(numberForSearch);
 
             if (!tableRowWithActiveInput.nextElementSibling) {
@@ -109,3 +101,21 @@ export const conversionTable = {
         });
     },
 };
+
+function findColorByDimensionsNumber(numberForSearch) {
+    let findedColor;
+
+    for (const color of arrayOfColors) {
+        const foundNumber = color.dimensionsNumber.find(
+            (number) => number === numberForSearch
+        );
+
+        if (foundNumber) {
+            color.searchedNumber = numberForSearch;
+            findedColor = color;
+            return findedColor;
+        }
+    }
+
+    if (!findedColor) return;
+}

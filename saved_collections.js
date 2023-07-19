@@ -1,3 +1,5 @@
+import { remove } from "./collection.js";
+
 export const savedCollections = {
     arrayOfCollections: [],
 
@@ -37,7 +39,7 @@ export const savedCollections = {
 
             if (findedCollection.isRendered) {
                 clickedCollection.style.backgroundColor = activeCollectionColor;
-                findedCollection.remove(collectionContainer);
+                remove(collectionContainer);
                 findedCollection.isRendered = false;
                 return;
             }
@@ -51,12 +53,13 @@ export const savedCollections = {
                     }
                 });
 
-                renderedCollection.remove(collectionContainer);
+                remove(collectionContainer);
                 renderedCollection.isRendered = false;
             }
 
             clickedCollection.style.backgroundColor = colorOfBackground;
             findedCollection.render();
+            findedCollection.addEventListeners();
             findedCollection.isRendered = true;
         });
     },

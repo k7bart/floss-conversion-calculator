@@ -9,13 +9,18 @@ class Color {
     }
 
     render(numberForSearch) {
-        // can make it better but not sure about another manufactorer options
+        // switch?
         let convertFromCode;
         let convertToCode;
 
-        conversionContainer.convertFrom === "DMC"
-            ? (convertFromCode = this.DMCNumber)
-            : (convertFromCode = numberForSearch);
+        if (conversionContainer.convertFrom === "DMC") {
+            convertFromCode = this.DMCNumber;
+            if (this.DMCNumber === 0) convertFromCode = this.colorName;
+        }
+
+        if (conversionContainer.convertFrom === "Dimensions") {
+            convertFromCode = numberForSearch;
+        }
 
         conversionContainer.convertTo === "DMC"
             ? (convertToCode = this.DMCNumber)

@@ -45,8 +45,13 @@ body {
     display: block;
 }
 
-#buttons_container {
+#buttons_container,
+#images_container {
     display: flex;
+}
+
+#images_container {
+    visibility: hidden;
 }
 
 #selects_container {
@@ -210,6 +215,9 @@ td {
     width: 25px;
     background: transparent;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #collections_button {
@@ -223,21 +231,39 @@ td {
 
 /* images */
 
-.sort_image {
-    width: 100%;
+img {
     filter: invert(95%) sepia(7%) saturate(252%) hue-rotate(325deg)
         brightness(94%) contrast(92%);
-    visibility: hidden;
+}
+
+#arrow_down_image {
+    transform: rotate(180deg);
+}
+
+.arrow_image {
+    margin: 0 -13px;
+    width: 75%;
+}
+
+.sort_image {
+    width: 100%;
+    transform: scale(0.5, 1);
+}
+
+#rotated_sort_image {
+    transform: scale(0.5, 1) rotate(180deg);
 }
 
 .favorite_image {
     margin: 4px 2px 0;
 }
 
+.close_image {
+    width: 100%;
+}
+
 .image {
     width: 35px;
-    filter: invert(95%) sepia(7%) saturate(252%) hue-rotate(325deg)
-        brightness(94%) contrast(92%);
 }
 
 /* list items */
