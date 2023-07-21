@@ -28,7 +28,7 @@ class Color {
 
         return ` 
         <tr>
-            <td><input type="search" maxlength="20" value="${convertFromCode}" name="ConvertFromCode"></td>
+            <td><input type="search" maxlength="5" value="${convertFromCode}" name="ConvertFromCode"></td>
             <td class="color__display"><span style="background: ${this.colorDispley}"></span></td>
             <td>${this.colorName}</td>
             <td>${convertToCode}</td>

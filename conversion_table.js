@@ -52,41 +52,58 @@ export const conversionTable = {
 
             const numberForSearch = parseInt(activeInput.value);
 
-            let findedColor = findColor(
+            const findedColor = findColor(
                 numberForSearch,
-                conversionContainer.convertFrom
+                conversionContainer.convertFrom,
+                arrayOfColors
             );
 
-            let colorIsFound = checkIfColorIsFound(
+            if (!findedColor) return;
+
+            const colorIsFound = checkIfColorIsFound(
                 findedColors,
                 numberForSearch,
                 conversionContainer.convertFrom
             );
 
             if (colorIsFound) {
-                highlightFoundColor(findedColor, tableBody);
+                highlightFoundColor(findedColor, findedColors, tableBody);
                 return;
             }
-
-            findedColor.position = findedColors.length; // come up with something else
-            findedColors.push(findedColor);
 
             tableRowWithActiveInput.innerHTML = // відмалювали у рядок зі знайденим Кольором у пошуку
                 findedColor.render(numberForSearch);
 
-            if (!tableRowWithActiveInput.nextElementSibling) {
-                const inputElement = `<tr><td><input type="search" maxlength="20" value="" placeholder="Enter the number" name="ConvertFromCode"></td></tr>`;
-                tableBody.innerHTML += inputElement;
+            // if there was a color - replace it
+            if (activeInput.defaultValue) {
+                const colorToRemove = findColor(
+                    parseInt(activeInput.defaultValue),
+                    conversionContainer.convertFrom,
+                    findedColors
+                );
+
+                findedColors.splice(
+                    findedColors.indexOf(colorToRemove),
+                    1,
+                    findedColor
+                );
+
+                return;
             }
+
+            findedColors.push(findedColor);
+
+            const inputElement = `<tr><td><input type="search" maxlength="5" value="" placeholder="Enter the number" name="ConvertFromCode"></td></tr>`;
+            tableBody.innerHTML += inputElement;
         });
     },
 };
 
-function findColor(numberForSearch, convertFrom) {
+function findColor(numberForSearch, convertFrom, array) {
     let findedColor;
 
     if (convertFrom === "DMC") {
-        findedColor = arrayOfColors.find(
+        findedColor = array.find(
             (color) => color.DMCNumber === numberForSearch
         );
     }
@@ -95,15 +112,13 @@ function findColor(numberForSearch, convertFrom) {
         findedColor = findColorByDimensionsNumber(numberForSearch);
     }
 
-    if (!findedColor) return;
-
     return findedColor;
 }
 
 function findColorByDimensionsNumber(numberForSearch) {
     let findedColor;
 
-    for (const color of arrayOfColors) {
+    for (const color of array) {
         const foundNumber = color.dimensionsNumber.find(
             (number) => number === numberForSearch
         );
@@ -129,11 +144,13 @@ function checkIfColorIsFound(findedColors, numberForSearch, convertFrom) {
 }
 
 // change logic
-function highlightFoundColor(findedColor, tableBody) {
-    tableBody.children[findedColor.position].classList.add("animate-highlight");
+function highlightFoundColor(findedColor, findedColors, tableBody) {
+    const indexOfFindedColor = findedColors.indexOf(findedColor);
+
+    tableBody.children[indexOfFindedColor].classList.add("animate-highlight");
 
     setTimeout(() => {
-        tableBody.children[findedColor.position].classList.remove(
+        tableBody.children[indexOfFindedColor].classList.remove(
             "animate-highlight"
         );
     }, 1000);
