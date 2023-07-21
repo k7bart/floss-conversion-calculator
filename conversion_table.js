@@ -41,12 +41,6 @@ export const conversionTable = {
         this.DOMElement.appendChild(tableBody);
     },
 
-    addEventListenerToTableHeader() {
-        const tableHeader = document.querySelector("thead");
-
-        tableHeader.addEventListener("click", function (event) {});
-    },
-
     addEventListenerToTableBody(findedColors) {
         const tableBody = document.querySelector("tbody");
 
@@ -58,36 +52,22 @@ export const conversionTable = {
 
             const numberForSearch = parseInt(activeInput.value);
 
-            let findedColor;
+            let findedColor = findColor(
+                numberForSearch,
+                conversionContainer.convertFrom
+            );
 
-            if (conversionContainer.convertFrom === "DMC") {
-                findedColor = arrayOfColors.find(
-                    (color) => color.DMCNumber === numberForSearch
-                );
+            let colorIsFound = checkIfColorIsFound(
+                findedColors,
+                numberForSearch,
+                conversionContainer.convertFrom
+            );
 
-                if (!findedColor) return;
-
-                if (
-                    findedColors.some(
-                        (color) => color.DMCNumber === numberForSearch
-                    )
-                ) {
-                    //change
-                    tableBody.children[findedColor.position].classList.add(
-                        "animate-highlight"
-                    );
-                    setTimeout(() => {
-                        tableBody.children[
-                            findedColor.position
-                        ].classList.remove("animate-highlight");
-                    }, 1000);
-                    return;
-                }
+            if (colorIsFound) {
+                highlightFoundColor(findedColor, tableBody);
+                return;
             }
 
-            if (conversionContainer.convertFrom === "Dimensions") {
-                findedColor = findColorByDimensionsNumber(numberForSearch);
-            }
             findedColor.position = findedColors.length; // come up with something else
             findedColors.push(findedColor);
 
@@ -101,6 +81,24 @@ export const conversionTable = {
         });
     },
 };
+
+function findColor(numberForSearch, convertFrom) {
+    let findedColor;
+
+    if (convertFrom === "DMC") {
+        findedColor = arrayOfColors.find(
+            (color) => color.DMCNumber === numberForSearch
+        );
+    }
+
+    if (convertFrom === "Dimensions") {
+        findedColor = findColorByDimensionsNumber(numberForSearch);
+    }
+
+    if (!findedColor) return;
+
+    return findedColor;
+}
 
 function findColorByDimensionsNumber(numberForSearch) {
     let findedColor;
@@ -118,4 +116,25 @@ function findColorByDimensionsNumber(numberForSearch) {
     }
 
     if (!findedColor) return;
+}
+
+function checkIfColorIsFound(findedColors, numberForSearch, convertFrom) {
+    const isColorFound = findedColors.some(
+        (color) =>
+            color[convertFrom === "DMC" ? "DMCNumber" : "searchedNumber"] ===
+            numberForSearch
+    );
+
+    return isColorFound;
+}
+
+// change logic
+function highlightFoundColor(findedColor, tableBody) {
+    tableBody.children[findedColor.position].classList.add("animate-highlight");
+
+    setTimeout(() => {
+        tableBody.children[findedColor.position].classList.remove(
+            "animate-highlight"
+        );
+    }, 1000);
 }
