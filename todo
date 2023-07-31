@@ -1,0 +1,13 @@
+add event listeners to delete buttons
+
+fix delete button for different containers
+
+ломається коли у коллекцій однакові назви
+
+обʼєднати convertion_container та convertion_table
+
+rename all saved_collections_container to library
+
+dont save collection with empty name
+
+dont save collection with exist name

@@ -1,7 +1,7 @@
 import { conversionContainer } from "./conversion_container.js";
 import { conversionTable } from "./conversion_table.js";
 import { addSavingWindow } from "./saving_window.js";
-import { savedCollections } from "./saved_collections.js";
+import { library } from "./saved_collections.js";
 
 const saveButton = document.getElementById("save_button");
 
@@ -13,9 +13,9 @@ conversionTable.renderHeader(
 );
 conversionTable.renderBody();
 conversionContainer.addEventListenerToConversionContainer(findedColors);
-savedCollections.addEventListenerToSidebar();
+library.DOMElement.addEventListenerToLibraryElement();
 
 saveButton.addEventListener("click", function () {
     if (!findedColors.length) return;
-    addSavingWindow(findedColors, savedCollections.arrayOfCollections);
+    addSavingWindow(findedColors, library.arrayOfCollections);
 });

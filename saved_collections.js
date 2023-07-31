@@ -1,66 +1,101 @@
 import { remove } from "./collection.js";
 
-export const savedCollections = {
+export const library = {
     arrayOfCollections: [],
 
-    render(collection) {
-        const collectionsListElement = document.querySelector(
-            "#saved_collections_container ul"
-        );
-
-        const collectionsListItem = document.createElement("li");
-        collectionsListItem.innerText = collection.name;
-
-        collectionsListElement.append(collectionsListItem);
-    },
-
-    addEventListenerToSidebar() {
-        if (!savedCollections.arrayOfCollections) return;
-
-        const container = document.getElementById(
-            "saved_collections_container"
-        );
-
-        container.addEventListener("click", (event) => {
-            const collectionContainer = document.getElementById(
-                "collection_container"
+    DOMElement: {
+        renderNameOfCollection(nameOfCollection) {
+            const listOfCollectionsElement = document.querySelector(
+                "#saved_collections_container ul"
             );
 
-            const clickedCollection = event.target.closest("li");
-            const findedCollection = savedCollections.arrayOfCollections.find(
-                (collection) => collection.name === clickedCollection.innerText
+            const listItemWithNameOfCollection = document.createElement("li");
+            listItemWithNameOfCollection.innerText = nameOfCollection;
+
+            listOfCollectionsElement.append(listItemWithNameOfCollection);
+        },
+
+        removeNameOfCollection(name) {
+            const listItem = findListItemInTheList(name);
+            listItem.remove();
+        },
+
+        addEventListenerToLibraryElement() {
+            const libraryElement = document.getElementById(
+                // знайти елемент контейнеру з збереженими колекціями
+                "saved_collections_container"
             );
-            const renderedCollection = savedCollections.arrayOfCollections.find(
-                (collection) => collection.isRendered
-            );
 
-            const colorOfBackground = "rgb(232 221 218)";
-            const activeCollectionColor = "rgb(245 236 233)";
+            libraryElement.addEventListener("click", (event) => {
+                if (!library.arrayOfCollections.length) return; // якщо немає збережених колекцій повернутись
 
-            if (findedCollection.isRendered) {
-                clickedCollection.style.backgroundColor = activeCollectionColor;
-                remove(collectionContainer);
-                findedCollection.isRendered = false;
-                return;
-            }
+                const renderedCollectionContainer = document.getElementById(
+                    // знайти контейнер колекції
+                    "collection_container"
+                );
 
-            if (renderedCollection) {
-                const listItems = container.querySelectorAll("li");
-                listItems.forEach((collection) => {
-                    if (collection.innerText === renderedCollection.name) {
-                        collection.style.backgroundColor =
-                            activeCollectionColor;
+                const clickedCollectionListItemElement =
+                    event.target.closest("li"); // елемент тицьнутої колекції
+                const clickedCollection = library.arrayOfCollections.find(
+                    (collection) =>
+                        collection.name ===
+                        clickedCollectionListItemElement.innerText // шукає обʼєкт колекції в масиві колекцій за допомогою тексту тицьнутої колекції
+                );
+                const alreadyRenderedCollection =
+                    library.arrayOfCollections.find(
+                        (collection) => collection.isRendered // шукає відмальовану коллекцію в масиві колекцій
+                    );
+
+                const renderedCollectionBackgroundColor = "rgb(232 221 218)";
+                const defaultBackgroundColor = "rgb(245 236 233)";
+
+                if (clickedCollection.isRendered) {
+                    clickedCollectionListItemElement.style.backgroundColor =
+                        defaultBackgroundColor;
+
+                    remove(renderedCollectionContainer);
+                    clickedCollection.isRendered = false;
+                    return;
+                }
+
+                // якщо є якась відмальована колекція
+                if (alreadyRenderedCollection) {
+                    if (!alreadyRenderedCollection.isRemoved) {
+                        // alreadyRenderedCollectionListItem
+                        const listItem = findListItemInTheList(
+                            alreadyRenderedCollection.name
+                        );
+                        listItem.style.backgroundColor = defaultBackgroundColor;
                     }
-                });
 
-                remove(collectionContainer);
-                renderedCollection.isRendered = false;
-            }
+                    remove(renderedCollectionContainer);
+                    alreadyRenderedCollection.isRendered = false;
+                }
 
-            clickedCollection.style.backgroundColor = colorOfBackground;
-            findedCollection.render();
-            findedCollection.addEventListeners();
-            findedCollection.isRendered = true;
-        });
+                clickedCollectionListItemElement.style.backgroundColor =
+                    renderedCollectionBackgroundColor;
+                clickedCollection.render();
+                clickedCollection.addEventListeners();
+                clickedCollection.isRendered = true;
+            });
+        },
     },
 };
+
+function findListItemInTheList(name) {
+    const listOfCollectionsElement = document.querySelector(
+        "#saved_collections_container ul"
+    );
+    const listItems = listOfCollectionsElement.querySelectorAll("li");
+
+    let listItem;
+
+    listItems.forEach((item) => {
+        if (item.innerText === name) {
+            listItem = item;
+            return;
+        }
+    });
+
+    return listItem;
+}

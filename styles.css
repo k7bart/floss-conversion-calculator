@@ -68,6 +68,19 @@ body {
     padding-bottom: 15px;
 }
 
+#restore_images_container_manage_button {
+    display: none;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+}
+#restore_images_container_manage_button.favorite_image {
+    display: none;
+}
+#restore_images_container_manage_button.heart_broken_image {
+    display: block;
+}
+
 header {
     height: max-content;
     width: 100%;
@@ -128,6 +141,12 @@ tbody tr {
     border-bottom: 3px solid rgb(87, 43, 57);
 }
 
+.small_td,
+.small_th {
+    min-width: 25px;
+    width: 25px;
+}
+
 th,
 td {
     display: table-cell;
@@ -151,7 +170,8 @@ td {
     animation: highlight 1s ease 0s 1 normal forwards;
 }
 
-#saving_window {
+#saving_window,
+#warning_window {
     position: absolute;
     padding: 40px;
     height: 250px;
@@ -175,6 +195,11 @@ td {
 
 #enter_name_input {
     width: 80%;
+}
+
+#warning_window p {
+    text-align: center;
+    color: rgb(232, 221, 218);
 }
 
 /* buttons */
@@ -215,6 +240,21 @@ td {
     justify-content: center;
 }
 
+.manage_button,
+.save_button {
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    border: none;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .sort_button {
     height: 25px;
     width: 25px;
@@ -234,6 +274,14 @@ td {
     background-color: rgb(87, 43, 57);
 }
 
+.delete_button {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: transparent;
+}
+
 /* images */
 
 img {
@@ -241,14 +289,25 @@ img {
         brightness(94%) contrast(92%);
 }
 
+/* TODO: add to dark images */
+.dark_image {
+    opacity: 0.8;
+    filter: invert(18%) sepia(31%) saturate(974%) hue-rotate(290deg)
+        brightness(89%) contrast(89%);
+}
+
 .arrow_image {
     margin: 0 -13px;
     width: 75%;
 }
 
-/* rename: big_image */
-.image {
+.large_image {
     width: 35px;
+}
+
+.large_image.favorite_image {
+    position: relative;
+    top: 5%;
 }
 
 #arrow_down_image {
@@ -264,12 +323,32 @@ img {
     transform: scale(0.5, 1) rotate(180deg);
 }
 
-.favorite_image {
-    margin: 4px 2px 0;
-}
-
 .close_image {
     width: 100%;
+}
+
+.manage_button > .heart_broken_image {
+    display: none;
+}
+
+.manage_button img {
+    width: 100%;
+    opacity: 0.8;
+    filter: invert(18%) sepia(31%) saturate(974%) hue-rotate(290deg)
+        brightness(89%) contrast(89%);
+}
+
+.manage_button img:hover {
+    opacity: 0.9;
+}
+
+.delete_image {
+    display: none;
+    width: 100%;
+}
+
+tr:hover .delete_image {
+    display: block;
 }
 
 /* list items */

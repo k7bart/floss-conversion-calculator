@@ -8,7 +8,7 @@ class Color {
         this.colorDispley = colorDispley;
     }
 
-    render(numberForSearch) {
+    render(numberForSearch, container) {
         // switch?
         let convertFromCode;
         let convertToCode;
@@ -26,12 +26,25 @@ class Color {
             ? (convertToCode = this.DMCNumber)
             : (convertToCode = this.dimensionsNumber);
 
-        return ` 
-        <tr>
+        const deleteButtonElement = `            
+            <td class="small_td">
+                <button class="delete_button">
+                    <img class="delete_image dark_image" src="images/delete.svg"/>
+                </button>
+            </td>`;
+
+        let colorDataElements = ` 
             <td><input type="search" maxlength="5" value="${convertFromCode}" name="ConvertFromCode"></td>
             <td class="color__display"><span style="background: ${this.colorDispley}"></span></td>
             <td>${this.colorName}</td>
             <td>${convertToCode}</td>
+            `;
+
+        if (container) colorDataElements += deleteButtonElement;
+
+        return `
+        <tr>
+        ${colorDataElements}
         </tr>
         `;
     }

@@ -16,6 +16,7 @@ export const conversionTable = {
                     <th class="header"></th>
                     <th class="header">DMC Color</th>
                     <th class="header">${convertTo}</th>
+                    <th class="header small_th"></th>
                 </tr>
             </thead>`;
 
@@ -72,7 +73,7 @@ export const conversionTable = {
             }
 
             tableRowWithActiveInput.innerHTML = // відмалювали у рядок зі знайденим Кольором у пошуку
-                findedColor.render(numberForSearch);
+                findedColor.render(numberForSearch, "tableBody");
 
             // if there was a color - replace it
             if (activeInput.defaultValue) {
@@ -109,13 +110,13 @@ function findColor(numberForSearch, convertFrom, array) {
     }
 
     if (convertFrom === "Dimensions") {
-        findedColor = findColorByDimensionsNumber(numberForSearch);
+        findedColor = findColorByDimensionsNumber(numberForSearch, array);
     }
 
     return findedColor;
 }
 
-function findColorByDimensionsNumber(numberForSearch) {
+function findColorByDimensionsNumber(numberForSearch, array) {
     let findedColor;
 
     for (const color of array) {
@@ -155,3 +156,5 @@ function highlightFoundColor(findedColor, findedColors, tableBody) {
         );
     }, 1000);
 }
+
+function addEventListenerToTableRow(row) {}

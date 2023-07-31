@@ -1,6 +1,6 @@
 import { Collection } from "./collection.js";
 import { conversionContainer } from "./conversion_container.js";
-import { savedCollections } from "./saved_collections.js";
+import { library } from "./saved_collections.js";
 
 export function addSavingWindow(findedColors, savedLists) {
     renderSavingWindow();
@@ -21,7 +21,7 @@ function renderSavingWindow() {
         name="ConvertFromCode"
     />
     <button class="button" type="submit">
-        <img class="image favorite_image" src="images/favorite.svg" alt="" />
+        <img class="large_image favorite_image" src="images/favorite.svg" alt="" />
     </button>`;
     document.body.appendChild(savingWindowElement);
 }
@@ -43,6 +43,15 @@ function addEventListenerToSavingWindow(findedColors, savedLists) {
         if (closeButton) return savingWindowElement.remove();
 
         if (saveButton) {
+            if (!enterNameInput.value) {
+                // TODO: change highlight
+                // enterNameInput.classList.add("animate-highlight");
+                // setTimeout(() => {
+                //     enterNameInput.classList.remove("animate-highlight");
+                // }, 1000);
+                return;
+            }
+
             const collection = new Collection(
                 enterNameInput.value,
                 listOfColorsToSave,
@@ -51,7 +60,7 @@ function addEventListenerToSavingWindow(findedColors, savedLists) {
             );
             savedLists.push(collection);
 
-            savedCollections.render(collection);
+            library.DOMElement.renderNameOfCollection(collection.name);
 
             savingWindowElement.remove();
             return;

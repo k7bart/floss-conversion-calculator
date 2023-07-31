@@ -1,4 +1,5 @@
-import { savedCollections } from "./saved_collections.js";
+import { library } from "./saved_collections.js";
+import { addWarningWindow } from "./warning_window.js";
 
 export class Collection {
     constructor(name, listOfColors, convertFrom, convertTo) {
@@ -9,6 +10,7 @@ export class Collection {
         this.convertTo = convertTo;
     }
 
+    // element:{}
     render() {
         const collectionContainer = document.createElement("div");
         collectionContainer.id = "collection_container";
@@ -17,6 +19,10 @@ export class Collection {
         <button class="close_button">
             <span class="material-symbols-outlined"> close </span>
         </button>
+        <button class="manage_button">
+                <img class="favorite_image" src="images/favorite.svg" alt="" />
+                <img class="heart_broken_image" src="images/heart_broken.svg" alt="" />
+        </button>
         <header>
             <h1>${this.name}</h1>
         </header>
@@ -24,10 +30,10 @@ export class Collection {
         </table>
         <div id="buttons_container">
             <button class="button">                
-                <img class="image" src="images/edit.svg" alt="edit" />
+                <img class="large_image" src="images/edit.svg" alt="edit" />
             </button>
             <button class="button">
-                <img class="image" src="images/download.svg" alt="download" />
+                <img class="large_image" src="images/download.svg" alt="download" />
             </button>
         </div>
         `;
@@ -41,7 +47,6 @@ export class Collection {
 
     addEventListeners() {
         addEventListenerToTableHeaderConverts();
-        // addEventListenerToSortButton(this.listOfColors, this.convertFrom);
         addEventListenerToSortButtonConvertFrom(
             this.listOfColors,
             this.convertFrom
@@ -51,6 +56,7 @@ export class Collection {
             this.convertTo
         );
 
+        addEventListenerToManageButton(this);
         addEventListenerToCloseButton();
     }
 }
@@ -292,14 +298,15 @@ function addEventListenerToCloseButton() {
     const collectionContainer = document.getElementById("collection_container");
     const closeButton = collectionContainer.querySelector(".close_button");
 
-    closeButton.addEventListener("click", function (event) {
+    closeButton.addEventListener("click", function () {
+        // ??? if (collection.isDeleted) забрати зі списку колекцій ???
         remove(collectionContainer);
     });
 }
 
 export function remove(collectionContainer) {
     const collectionName = collectionContainer.querySelector("h1").innerText;
-    const collection = savedCollections.arrayOfCollections.find(
+    const collection = library.arrayOfCollections.find(
         (collection) => collection.name === collectionName
     );
 
@@ -307,5 +314,126 @@ export function remove(collectionContainer) {
         collection.isRendered = false;
         collectionContainer.remove();
         document.getElementById("convert_container").style.display = "flex";
+    }
+}
+
+function addEventListenerToManageButton(collection) {
+    const manageButton = document.querySelector(
+        "#collection_container .manage_button"
+    );
+    const favoriteImage = manageButton.querySelector(".favorite_image");
+    const heartBrokenImage = manageButton.querySelector(".heart_broken_image");
+
+    manageButton.addEventListener("mouseenter", handleRemovingEvent);
+    manageButton.addEventListener("mouseleave", handleRemovingEvent);
+    manageButton.addEventListener("click", handleRemovingEvent);
+
+    function handleSavingEvent(event) {
+        favoriteImage.style.display =
+            event.type === "mouseenter" ? "block" : "none";
+        heartBrokenImage.style.display =
+            event.type === "mouseenter" ? "none" : "block";
+
+        if (event.type === "click") {
+            library.DOMElement.renderNameOfCollection(collection.name);
+            manageButton.addEventListener("mouseenter", handleRemovingEvent);
+            manageButton.addEventListener("mouseleave", handleRemovingEvent);
+            manageButton.addEventListener("click", handleRemovingEvent);
+
+            manageButton.removeEventListener("mouseenter", handleSavingEvent);
+            manageButton.removeEventListener("mouseleave", handleSavingEvent);
+            manageButton.removeEventListener("click", handleSavingEvent);
+
+            favoriteImage.style.display = "none";
+            heartBrokenImage.style.display = "block";
+            collection.isRemoved = false;
+        }
+    }
+
+    function handleRemovingEvent(event) {
+        favoriteImage.style.display =
+            event.type === "mouseenter" ? "none" : "block";
+        heartBrokenImage.style.display =
+            event.type === "mouseenter" ? "block" : "none";
+
+        if (event.type === "click") {
+            function renderWarningWindow(collection) {
+                const warningWindowElement = document.createElement("div");
+                warningWindowElement.id = "warning_window";
+                warningWindowElement.innerHTML = `
+                    <p>Are you sure you want to remove the ${collection.name} Collection from your Library?</p>
+                    <button class="close_button">
+                    <img class="close_image" src="images/close.svg" alt="close" />
+                    </button>
+                    <button class="button" type="submit">
+                        <img class="large_image favorite_image" src="images/heart_broken.svg" alt="" />
+                    </button>
+                    `;
+                document.body.appendChild(warningWindowElement);
+            }
+            function addEventListenerToWarningWindow(collection) {
+                const warningWindowElement =
+                    document.getElementById("warning_window");
+
+                warningWindowElement.addEventListener(
+                    "click",
+                    function (event) {
+                        const closeButton =
+                            event.target.closest(".close_button");
+                        const deleteButton = event.target.closest(".button");
+
+                        if (!closeButton && !deleteButton) return;
+
+                        if (closeButton) return warningWindowElement.remove();
+
+                        if (deleteButton) {
+                            //перемалювати кнопку
+                            favoriteImage.style.display = "none";
+                            heartBrokenImage.style.display = "block";
+
+                            manageButton.removeEventListener(
+                                "mouseenter",
+                                handleRemovingEvent
+                            );
+                            manageButton.removeEventListener(
+                                "mouseleave",
+                                handleRemovingEvent
+                            );
+                            manageButton.removeEventListener(
+                                "click",
+                                handleRemovingEvent
+                            );
+
+                            manageButton.addEventListener(
+                                "mouseenter",
+                                handleSavingEvent
+                            );
+                            manageButton.addEventListener(
+                                "mouseleave",
+                                handleSavingEvent
+                            );
+                            manageButton.addEventListener(
+                                "click",
+                                handleSavingEvent
+                            );
+
+                            // забрати з елементу library
+                            // може не забирати, а приховувати?
+                            library.DOMElement.removeNameOfCollection(
+                                collection.name
+                            );
+
+                            //про всяк випадок:
+                            collection.isRemoved = true;
+                            //прибрати вікно
+                            warningWindowElement.remove();
+                        }
+                    }
+                );
+            }
+
+            renderWarningWindow(collection);
+            addEventListenerToWarningWindow(collection);
+        }
     }
 }
