@@ -1,6 +1,7 @@
 import { Collection } from "./collection.js";
 import { conversionContainer } from "./conversion_container.js";
 import { library } from "./saved_collections.js";
+import { findListItemElementInTheListElement } from "./saved_collections.js";
 
 export function addSavingWindow(findedColors, savedLists) {
     renderSavingWindow();
@@ -49,6 +50,19 @@ function addEventListenerToSavingWindow(findedColors, savedLists) {
                 // setTimeout(() => {
                 //     enterNameInput.classList.remove("animate-highlight");
                 // }, 1000);
+                return;
+            }
+
+            const existCollectionWithSameName = savedLists.find(
+                (collection) => collection.name === enterNameInput.value
+            );
+
+            if (existCollectionWithSameName) {
+                const existCollectionWithSameNameElement =
+                    findListItemElementInTheListElement(
+                        existCollectionWithSameName.name
+                    );
+                // TODO: add highlight
                 return;
             }
 

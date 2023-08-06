@@ -16,7 +16,7 @@ export const library = {
         },
 
         removeNameOfCollection(name) {
-            const listItem = findListItemInTheList(name);
+            const listItem = findListItemElementInTheListElement(name);
             listItem.remove();
         },
 
@@ -62,7 +62,7 @@ export const library = {
                 if (alreadyRenderedCollection) {
                     if (!alreadyRenderedCollection.isRemoved) {
                         // alreadyRenderedCollectionListItem
-                        const listItem = findListItemInTheList(
+                        const listItem = findListItemElementInTheListElement(
                             alreadyRenderedCollection.name
                         );
                         listItem.style.backgroundColor = defaultBackgroundColor;
@@ -82,20 +82,21 @@ export const library = {
     },
 };
 
-function findListItemInTheList(name) {
+// TODO: rename?
+export function findListItemElementInTheListElement(name) {
     const listOfCollectionsElement = document.querySelector(
         "#saved_collections_container ul"
     );
     const listItems = listOfCollectionsElement.querySelectorAll("li");
 
-    let listItem;
+    let listItemElement;
 
     listItems.forEach((item) => {
         if (item.innerText === name) {
-            listItem = item;
+            listItemElement = item;
             return;
         }
     });
 
-    return listItem;
+    return listItemElement;
 }
