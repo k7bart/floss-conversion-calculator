@@ -1,9 +1,11 @@
-add event listeners to delete buttons
+// add event listeners to delete buttons
 
-fix delete button for different containers
+// fix delete button for different containers
 
-обʼєднати convertion_container та convertion_table
+// обʼєднати convertion_container та convertion_table
 
-rename all saved_collections_container to library
+// work with highlights
 
-work with highlights
+// save and delete from cash
+
+// not collection but list

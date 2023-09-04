@@ -1,5 +1,4 @@
-import { library } from "./saved_collections.js";
-import { addWarningWindow } from "./warning_window.js";
+import { library } from "./library.js";
 
 export class Collection {
     constructor(name, listOfColors, convertFrom, convertTo) {
@@ -16,12 +15,12 @@ export class Collection {
         collectionContainer.id = "collection_container";
         collectionContainer.classList.add("container");
         collectionContainer.innerHTML = `
-        <button class="close_button">
-            <span class="material-symbols-outlined"> close </span>
+        <button class="small_button transparent_button close_button">
+            <img class="close_image" src="images/close.svg" alt="" />
         </button>
         <button class="manage_button">
-                <img class="favorite_image" src="images/favorite.svg" alt="" />
-                <img class="heart_broken_image" src="images/heart_broken.svg" alt="" />
+            <img class="favorite_image" src="images/favorite.svg" alt="" />
+            <img class="heart_broken_image" src="images/heart_broken.svg" alt="" />
         </button>
         <header>
             <h1>${this.name}</h1>
@@ -39,7 +38,7 @@ export class Collection {
         `;
 
         document.getElementById("convert_container").style.display = "none";
-        document.body.appendChild(collectionContainer);
+        document.querySelector("main").appendChild(collectionContainer);
         renderHeader(this.convertFrom, this.convertTo);
         renderBody(this.listOfColors);
         return;
@@ -66,14 +65,13 @@ function renderHeader(convertFrom, convertTo) {
     const tableHeader = document.createElement("thead");
     tableHeader.id = "saved_collection_table_header";
     tableHeader.innerHTML = `
-    <tr>
     <col>
     <col>
     <col>
     <col>
         <th id="convert_from_table_header" class="header">
             <div id="convert_from_container">
-                ${convertFrom} 
+                <h4>${convertFrom}</h4>
                 <button class="sort_button">
                     <div class="images_container">
                         <img class="sort_image" src="images/list.svg" alt="" />
@@ -83,10 +81,12 @@ function renderHeader(convertFrom, convertTo) {
             </div>
         </th>
         <th class="header"></th>
-        <th class="header">DMC Color</th>
+        <th class="header">
+            <h4>DMC Color</h4>
+        </th>
         <th id="convert_to_table_header" class="header">
             <div id="convert_to_container">
-                ${convertTo} 
+                <h4>${convertTo}</h4>
                 <button class="sort_button">
                     <div class="images_container">
                         <img class="sort_image" src="images/list.svg" alt="" />
@@ -95,15 +95,15 @@ function renderHeader(convertFrom, convertTo) {
                 </button>
             </div>
         </th>
-    </tr>
     `;
     table.appendChild(tableHeader);
 }
 
 function renderBody(listOfColors) {
-    const table = document.getElementById("saved_collection_table");
+    const collectionContainer = document.getElementById("collection_container");
+    const table = collectionContainer.querySelector("table");
+    let tableBody = table.querySelector("tbody");
 
-    let tableBody = document.querySelector("#saved_collection_table tbody");
     if (!tableBody) tableBody = document.createElement("tbody");
 
     tableBody.innerHTML = listOfColors.reduce(
@@ -313,7 +313,7 @@ export function remove(collectionContainer) {
     if (collection) {
         collection.isRendered = false;
         collectionContainer.remove();
-        document.getElementById("convert_container").style.display = "flex";
+        document.getElementById("convert_container").style.display = "block";
     }
 }
 
@@ -335,7 +335,7 @@ function addEventListenerToManageButton(collection) {
             event.type === "mouseenter" ? "none" : "block";
 
         if (event.type === "click") {
-            library.DOMElement.renderNameOfCollection(collection.name);
+            library.DOMElement.renderNameOfCollection(collection);
             manageButton.addEventListener("mouseenter", handleRemovingEvent);
             manageButton.addEventListener("mouseleave", handleRemovingEvent);
             manageButton.addEventListener("click", handleRemovingEvent);
@@ -419,7 +419,7 @@ function addEventListenerToManageButton(collection) {
 
                             // забрати з елементу library
                             // може не забирати, а приховувати?
-                            library.DOMElement.removeNameOfCollection(
+                            library.DOMElement.removeCollectionListItemElement(
                                 collection.name
                             );
 

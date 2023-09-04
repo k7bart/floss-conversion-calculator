@@ -1,18 +1,19 @@
 import { Collection } from "./collection.js";
 import { conversionContainer } from "./conversion_container.js";
-import { library } from "./saved_collections.js";
-import { findListItemElementInTheListElement } from "./saved_collections.js";
+import { library } from "./library.js";
+import { findListItemElementInTheListElement } from "./library.js";
+import { savedLists } from "./script.js";
 
-export function addSavingWindow(findedColors, savedLists) {
+export function addSavingWindow(findedColors) {
     renderSavingWindow();
-    addEventListenerToSavingWindow(findedColors, savedLists);
+    initializeEventListener(findedColors);
 }
 
 function renderSavingWindow() {
     const savingWindowElement = document.createElement("div");
     savingWindowElement.id = "saving_window";
     savingWindowElement.innerHTML = `
-    <button class="close_button">
+    <button class="transparent_button small_button close_button">
     <img class="close_image" src="images/close.svg" alt="close" />
     </button>
     <input
@@ -27,7 +28,7 @@ function renderSavingWindow() {
     document.body.appendChild(savingWindowElement);
 }
 
-function addEventListenerToSavingWindow(findedColors, savedLists) {
+function initializeEventListener(findedColors) {
     const savingWindowElement = document.getElementById("saving_window");
 
     savingWindowElement.addEventListener("click", function (event) {
@@ -50,7 +51,7 @@ function addEventListenerToSavingWindow(findedColors, savedLists) {
                 // setTimeout(() => {
                 //     enterNameInput.classList.remove("animate-highlight");
                 // }, 1000);
-                return;
+                // return;
             }
 
             const existCollectionWithSameName = savedLists.find(
@@ -72,9 +73,11 @@ function addEventListenerToSavingWindow(findedColors, savedLists) {
                 conversionContainer.convertFrom,
                 conversionContainer.convertTo
             );
-            savedLists.push(collection);
 
-            library.DOMElement.renderNameOfCollection(collection.name);
+            savedLists.push(collection);
+            localStorage.setItem(`savedLists`, JSON.stringify(savedLists));
+
+            library.DOMElement.renderNameOfCollection(collection);
 
             savingWindowElement.remove();
             return;

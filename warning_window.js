@@ -1,4 +1,4 @@
-import { library } from "./saved_collections.js";
+import { library } from "./library.js";
 
 export function addWarningWindow(collection) {
     renderWarningWindow(collection);
@@ -19,7 +19,7 @@ function renderWarningWindow(collection) {
         `;
     document.body.appendChild(warningWindowElement);
 }
-function addEventListenerToWarningWindow(collection, handleEvent) {
+function addEventListenerToWarningWindow(collection) {
     const warningWindowElement = document.getElementById("warning_window");
 
     warningWindowElement.addEventListener("click", function (event) {
@@ -33,10 +33,7 @@ function addEventListenerToWarningWindow(collection, handleEvent) {
         if (deleteButton) {
             // забрати з елементу library
             // може не забирати, а приховувати?
-            library.DOMElement.removeNameOfCollection(collection.name);
-            //перемалювати кнопку видалення на кнопку збереження
-
-            //про всяк випадок:
+            library.DOMElement.removeCollectionListItemElement(collection.name);
             collection.isRemoved = true;
             //прибрати вікно
             warningWindowElement.remove();

@@ -12,10 +12,16 @@ export const conversionTable = {
         tableHeader.innerHTML = `                
             <thead>
                 <tr>
-                    <th class="header">${convertFrom}</th>
+                    <th class="header">
+                        <h4>${convertFrom}</h4>
+                    </th>
                     <th class="header"></th>
-                    <th class="header">DMC Color</th>
-                    <th class="header">${convertTo}</th>
+                    <th class="header">
+                        <h4>DMC Color</h4>
+                    </th>
+                    <th class="header">
+                        <h4>${convertTo}</h4>
+                    </th>
                     <th class="header small_th"></th>
                 </tr>
             </thead>`;
@@ -60,6 +66,11 @@ export const conversionTable = {
             );
 
             if (!findedColor) return;
+
+            if (findedColors.length === 0) {
+                const selects = document.getElementById("selects_container");
+                selects.remove();
+            }
 
             const colorIsFound = checkIfColorIsFound(
                 findedColors,
@@ -156,5 +167,3 @@ function highlightFoundColor(findedColor, findedColors, tableBody) {
         );
     }, 1000);
 }
-
-function addEventListenerToTableRow(row) {}
