@@ -3,6 +3,7 @@ import { conversionTable } from "./conversion_table.js";
 import { addSavingWindow } from "./saving_window.js";
 import { library } from "./library.js";
 import { Collection } from "./collection.js";
+import { Color } from "./colors.js";
 
 let findedColors = [];
 
@@ -19,6 +20,10 @@ if (savedLists) {
     for (let list of savedLists) {
         library.DOMElement.renderNameOfCollection(list);
         Object.setPrototypeOf(list, Collection.prototype);
+
+        for (let color of list.listOfColors) {
+            Object.setPrototypeOf(color, Color.prototype);
+        }
     }
 }
 

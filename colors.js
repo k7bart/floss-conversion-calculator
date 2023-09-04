@@ -1,6 +1,6 @@
 import { conversionContainer } from "./conversion_container.js";
 
-class Color {
+export class Color {
     constructor(colorName, dimensionsNumber, DMCNumber, colorDispley) {
         this.colorName = colorName;
         this.dimensionsNumber = dimensionsNumber;
