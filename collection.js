@@ -1,4 +1,5 @@
 import { library } from "./library.js";
+import { savedLists } from "./script.js";
 
 export class Collection {
     constructor(name, listOfColors, convertFrom, convertTo) {
@@ -306,7 +307,7 @@ function addEventListenerToCloseButton() {
 
 export function remove(collectionContainer) {
     const collectionName = collectionContainer.querySelector("h1").innerText;
-    const collection = library.arrayOfCollections.find(
+    const collection = savedLists.find(
         (collection) => collection.name === collectionName
     );
 
@@ -336,6 +337,7 @@ function addEventListenerToManageButton(collection) {
 
         if (event.type === "click") {
             library.DOMElement.renderNameOfCollection(collection);
+
             manageButton.addEventListener("mouseenter", handleRemovingEvent);
             manageButton.addEventListener("mouseleave", handleRemovingEvent);
             manageButton.addEventListener("click", handleRemovingEvent);
@@ -417,13 +419,21 @@ function addEventListenerToManageButton(collection) {
                                 handleSavingEvent
                             );
 
-                            // забрати з елементу library
-                            // може не забирати, а приховувати?
+                            // забрати з кешу
+                            let filteredArrayOfLists = savedLists.filter(
+                                (list) => list.name !== collection.name
+                            );
+
+                            localStorage.setItem(
+                                `savedLists`,
+                                JSON.stringify(filteredArrayOfLists)
+                            );
+
+                            // забрати елемент
                             library.DOMElement.removeCollectionListItemElement(
                                 collection.name
                             );
 
-                            //про всяк випадок:
                             collection.isRemoved = true;
                             //прибрати вікно
                             warningWindowElement.remove();

@@ -51,7 +51,7 @@ function initializeEventListener(findedColors) {
                 // setTimeout(() => {
                 //     enterNameInput.classList.remove("animate-highlight");
                 // }, 1000);
-                // return;
+                return;
             }
 
             const existCollectionWithSameName = savedLists.find(
@@ -76,7 +76,6 @@ function initializeEventListener(findedColors) {
 
             savedLists.push(collection);
             localStorage.setItem(`savedLists`, JSON.stringify(savedLists));
-
             library.DOMElement.renderNameOfCollection(collection);
 
             savingWindowElement.remove();

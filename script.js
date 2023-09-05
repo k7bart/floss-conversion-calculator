@@ -8,14 +8,6 @@ import { Color } from "./colors.js";
 let findedColors = [];
 
 let savedLists = JSON.parse(localStorage.getItem("savedLists"));
-
-conversionTable.renderHeader(
-    conversionContainer.convertFrom,
-    conversionContainer.convertTo
-);
-conversionTable.renderBody();
-conversionContainer.addEventListenerToConversionContainer(findedColors);
-
 if (savedLists) {
     for (let list of savedLists) {
         library.DOMElement.renderNameOfCollection(list);
@@ -26,8 +18,14 @@ if (savedLists) {
         }
     }
 }
-
 if (!savedLists) savedLists = [];
+
+conversionTable.renderHeader(
+    conversionContainer.convertFrom,
+    conversionContainer.convertTo
+);
+conversionTable.renderBody();
+conversionContainer.addEventListenerToConversionContainer(findedColors);
 
 library.DOMElement.initializeEventListeners();
 
