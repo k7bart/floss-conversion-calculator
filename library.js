@@ -1,5 +1,6 @@
-import { remove } from "./collection.js";
-import { savedLists } from "./script.js";
+import { Color } from "./colors.js";
+import state from "./state.js";
+import { Collection, remove } from "./collection.js";
 
 export const library = {
     DOMElement: {
@@ -34,16 +35,12 @@ export const library = {
         },
 
         initializeEventListeners() {
-            const libraryElement = document.getElementById(
-                // знайти елемент контейнеру з збереженими колекціями
-                "library_container"
-            );
+            // знайти елемент бібліотеки
+            const libraryElement = document.getElementById("library_container");
 
             libraryElement.addEventListener("click", (event) => {
-                if (!savedLists.length) return; // якщо немає збережених колекцій повернутись
-
+                // знайти контейнер колекції
                 const renderedCollectionContainer = document.getElementById(
-                    // знайти контейнер колекції
                     "collection_container"
                 );
 
@@ -52,15 +49,12 @@ export const library = {
 
                 if (!clickedCollectionListItemElement) return; // якщо тицьнули на порожнє
 
-                const clickedCollection = savedLists.find(
+                const clickedCollection = state.savedLists.find(
                     (collection) =>
                         collection.name ===
                         clickedCollectionListItemElement.querySelector(
                             ".name_container"
                         ).innerText // шукає обʼєкт колекції в масиві колекцій за допомогою тексту тицьнутої колекції
-                );
-                const alreadyRenderedCollection = savedLists.find(
-                    (collection) => collection.isRendered // шукає відмальовану коллекцію в масиві колекцій
                 );
 
                 const renderedCollectionBackgroundColor = "rgb(35 35 35)";
@@ -75,18 +69,27 @@ export const library = {
                 }
 
                 // якщо є якась відмальована колекція
-                if (alreadyRenderedCollection) {
-                    if (!alreadyRenderedCollection.isRemoved) {
-                        // alreadyRenderedCollectionListItem
-                        const listItem = findListItemElementInTheListElement(
-                            alreadyRenderedCollection.name
-                        );
-                        listItem.style.backgroundColor = "transparent";
-                    }
+                const alreadyRenderedCollection = state.savedLists.find(
+                    (collection) => collection.isRendered // шукає відмальовану коллекцію в масиві колекцій
+                );
 
+                // if (alreadyRenderedCollection) {
+                //     if (!alreadyRenderedCollection.isRemoved) {
+                //         const listItem = findListItemElementInTheListElement(
+                //             alreadyRenderedCollection.name
+                //         );
+                //         listItem.style.backgroundColor = "transparent";
+                //     }
+
+                //     remove(renderedCollectionContainer);
+                //     alreadyRenderedCollection.isRendered = false;
+                // }
+
+                if (
+                    renderedCollectionContainer &&
+                    !clickedCollection.isRendered
+                )
                     remove(renderedCollectionContainer);
-                    alreadyRenderedCollection.isRendered = false;
-                }
 
                 if (!clickedCollection.isRendered) {
                     clickedCollectionListItemElement.style.backgroundColor =
@@ -118,4 +121,15 @@ export function findListItemElementInTheListElement(name) {
     });
 
     return listItemElement;
+}
+
+if (state.savedLists) {
+    for (let list of state.savedLists) {
+        library.DOMElement.renderNameOfCollection(list);
+        Object.setPrototypeOf(list, Collection.prototype);
+
+        for (let color of list.listOfColors) {
+            Object.setPrototypeOf(color, Color.prototype);
+        }
+    }
 }

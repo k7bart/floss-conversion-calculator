@@ -2,7 +2,7 @@ import { Collection } from "./collection.js";
 import { conversionContainer } from "./conversion_container.js";
 import { library } from "./library.js";
 import { findListItemElementInTheListElement } from "./library.js";
-import { savedLists } from "./script.js";
+import state from "./state.js";
 
 export function addSavingWindow(findedColors) {
     renderSavingWindow();
@@ -54,7 +54,7 @@ function initializeEventListener(findedColors) {
                 return;
             }
 
-            const existCollectionWithSameName = savedLists.find(
+            const existCollectionWithSameName = state.savedLists.find(
                 (collection) => collection.name === enterNameInput.value
             );
 
@@ -74,8 +74,11 @@ function initializeEventListener(findedColors) {
                 conversionContainer.convertTo
             );
 
-            savedLists.push(collection);
-            localStorage.setItem(`savedLists`, JSON.stringify(savedLists));
+            state.savedLists.push(collection);
+            localStorage.setItem(
+                `savedLists`,
+                JSON.stringify(state.savedLists)
+            );
             library.DOMElement.renderNameOfCollection(collection);
 
             savingWindowElement.remove();

@@ -1,5 +1,5 @@
 import { library } from "./library.js";
-import { savedLists } from "./script.js";
+import state from "./state.js";
 
 export class Collection {
     constructor(name, listOfColors, convertFrom, convertTo) {
@@ -28,14 +28,6 @@ export class Collection {
         </header>
         <table id="saved_collection_table" class="conversion_table">
         </table>
-        <div id="buttons_container">
-            <button class="button">                
-                <img class="large_image" src="images/edit.svg" alt="edit" />
-            </button>
-            <button class="button">
-                <img class="large_image" src="images/download.svg" alt="download" />
-            </button>
-        </div>
         `;
 
         document.getElementById("convert_container").style.display = "none";
@@ -307,7 +299,7 @@ function addEventListenerToCloseButton() {
 
 export function remove(collectionContainer) {
     const collectionName = collectionContainer.querySelector("h1").innerText;
-    const collection = savedLists.find(
+    const collection = state.savedLists.find(
         (collection) => collection.name === collectionName
     );
 
@@ -316,6 +308,11 @@ export function remove(collectionContainer) {
         collectionContainer.remove();
         document.getElementById("convert_container").style.display = "block";
     }
+
+    // if (!collection) {
+    //     collectionContainer.remove();
+    //     document.getElementById("convert_container").style.display = "block";
+    // }
 }
 
 function addEventListenerToManageButton(collection) {
@@ -364,7 +361,7 @@ function addEventListenerToManageButton(collection) {
                 warningWindowElement.id = "warning_window";
                 warningWindowElement.innerHTML = `
                     <p>Are you sure you want to remove the ${collection.name} Collection from your Library?</p>
-                    <button class="close_button">
+                    <button class="small_button transparent_button close_button">
                     <img class="close_image" src="images/close.svg" alt="close" />
                     </button>
                     <button class="button" type="submit">
@@ -420,14 +417,18 @@ function addEventListenerToManageButton(collection) {
                             );
 
                             // забрати з кешу
-                            let filteredArrayOfLists = savedLists.filter(
+                            state.savedLists = state.savedLists.filter(
                                 (list) => list.name !== collection.name
                             );
 
                             localStorage.setItem(
                                 `savedLists`,
-                                JSON.stringify(filteredArrayOfLists)
+                                JSON.stringify(state.savedLists)
                             );
+
+                            //створити копію списку кешу
+                            //забирати з копії
+                            //видаляти з кешу коли закривається вікно і колекція видалена
 
                             // забрати елемент
                             library.DOMElement.removeCollectionListItemElement(
