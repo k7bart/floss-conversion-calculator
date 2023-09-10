@@ -2,7 +2,7 @@ import { Collection } from "./collection.js";
 import { conversionContainer } from "./conversion_container.js";
 import { library } from "./library.js";
 import { findListItemElementInTheListElement } from "./library.js";
-import state from "./state.js";
+import { state, savedListsCopy } from "./state.js";
 
 export function addSavingWindow(findedColors) {
     renderSavingWindow();
@@ -59,10 +59,6 @@ function initializeEventListener(findedColors) {
             );
 
             if (existCollectionWithSameName) {
-                const existCollectionWithSameNameElement =
-                    findListItemElementInTheListElement(
-                        existCollectionWithSameName.name
-                    );
                 // TODO: add highlight
                 return;
             }
@@ -75,6 +71,8 @@ function initializeEventListener(findedColors) {
             );
 
             state.savedLists.push(collection);
+            savedListsCopy.push(collection);
+
             localStorage.setItem(
                 `savedLists`,
                 JSON.stringify(state.savedLists)

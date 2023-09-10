@@ -1,5 +1,5 @@
 import { library } from "./library.js";
-import state from "./state.js";
+import { state } from "./state.js";
 
 export class Collection {
     constructor(name, listOfColors, convertFrom, convertTo) {
@@ -49,7 +49,7 @@ export class Collection {
         );
 
         addEventListenerToManageButton(this);
-        addEventListenerToCloseButton();
+        addEventListenerToCloseButton(this);
     }
 }
 
@@ -287,13 +287,32 @@ function addEventListenerToSortButtonConvertTo(listOfColors, convertTo) {
     });
 }
 
-function addEventListenerToCloseButton() {
-    const collectionContainer = document.getElementById("collection_container");
-    const closeButton = collectionContainer.querySelector(".close_button");
+function addEventListenerToCloseButton(collection) {
+    const closeButton = document.querySelector(
+        "#collection_container .close_button"
+    );
 
-    closeButton.addEventListener("click", function () {
-        // ??? if (collection.isDeleted) забрати зі списку колекцій ???
-        remove(collectionContainer);
+    closeButton.addEventListener("click", () => {
+        const foundItem = Array.from(
+            document.querySelectorAll("#library_container ul li")
+        ).find((listItem) => {
+            return (
+                listItem.querySelector(".name_container").textContent.trim() ===
+                collection.name
+            );
+        });
+
+        if (foundItem) foundItem.classList.remove("active-background");
+
+        remove(document.getElementById("collection_container"));
+
+        if (collection.isRemoved) {
+            state.savedLists.splice(state.savedLists.indexOf(collection), 1);
+            localStorage.setItem(
+                `savedLists`,
+                JSON.stringify(state.savedLists)
+            );
+        }
     });
 }
 
@@ -416,26 +435,14 @@ function addEventListenerToManageButton(collection) {
                                 handleSavingEvent
                             );
 
-                            // забрати з кешу
-                            state.savedLists = state.savedLists.filter(
-                                (list) => list.name !== collection.name
-                            );
-
-                            localStorage.setItem(
-                                `savedLists`,
-                                JSON.stringify(state.savedLists)
-                            );
-
-                            //створити копію списку кешу
-                            //забирати з копії
-                            //видаляти з кешу коли закривається вікно і колекція видалена
+                            //в копії кешу знайти колекцію, додати ключ isRemoved
+                            collection.isRemoved = true;
 
                             // забрати елемент
                             library.DOMElement.removeCollectionListItemElement(
                                 collection.name
                             );
 
-                            collection.isRemoved = true;
                             //прибрати вікно
                             warningWindowElement.remove();
                         }

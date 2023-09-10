@@ -1,5 +1,5 @@
 import { Color } from "./colors.js";
-import state from "./state.js";
+import { state, savedListsCopy } from "./state.js";
 import { Collection, remove } from "./collection.js";
 
 export const library = {
@@ -39,65 +39,74 @@ export const library = {
             const libraryElement = document.getElementById("library_container");
 
             libraryElement.addEventListener("click", (event) => {
-                // знайти контейнер колекції
+                // контейнер відмальованої колекції
                 const renderedCollectionContainer = document.getElementById(
                     "collection_container"
                 );
 
+                // обʼєкт відмальованої колекції
+                const renderedCollection = state.savedLists.find(
+                    (collection) => collection.isRendered
+                );
+
+                // елемент тицьнутої колекції в списку
                 const clickedCollectionListItemElement =
-                    event.target.closest("li"); // елемент тицьнутої колекції
+                    event.target.closest("li");
 
-                if (!clickedCollectionListItemElement) return; // якщо тицьнули на порожнє
-
-                const clickedCollection = state.savedLists.find(
+                // обʼєкт тицьнутої колекції
+                const clickedCollection = savedListsCopy.find(
                     (collection) =>
                         collection.name ===
                         clickedCollectionListItemElement.querySelector(
                             ".name_container"
-                        ).innerText // шукає обʼєкт колекції в масиві колекцій за допомогою тексту тицьнутої колекції
+                        ).innerText
                 );
 
-                const renderedCollectionBackgroundColor = "rgb(35 35 35)";
+                if (!clickedCollectionListItemElement) return; // якщо тицьнули на порожнє
 
-                if (clickedCollection.isRendered) {
-                    clickedCollectionListItemElement.style.backgroundColor =
-                        "transparent";
+                if (renderedCollection) {
+                    // якщо відмальована та, на яку натиснули
+                    if (clickedCollection.isRendered) {
+                        clickedCollectionListItemElement.classList.remove(
+                            "active-background"
+                        );
+                        remove(renderedCollectionContainer);
+                        clickedCollection.isRendered = false;
+                        return;
+                    }
 
-                    remove(renderedCollectionContainer);
-                    clickedCollection.isRendered = false;
-                    return;
+                    if (clickedCollection != renderedCollection) {
+                        if (renderedCollection.isRemoved) {
+                            // забрати з кешу
+                            state.savedLists = state.savedLists.filter(
+                                (list) => list.name !== renderedCollection.name
+                            );
+
+                            localStorage.setItem(
+                                `savedLists`,
+                                JSON.stringify(state.savedLists)
+                            );
+                        }
+
+                        if (!renderedCollection.isRemoved) {
+                            const listItem =
+                                findListItemElementInTheListElement(
+                                    renderedCollection.name
+                                );
+                            listItem.classList.remove("active-background");
+                            renderedCollection.isRendered = false;
+                        }
+
+                        renderedCollectionContainer.remove();
+                    }
                 }
 
-                // якщо є якась відмальована колекція
-                const alreadyRenderedCollection = state.savedLists.find(
-                    (collection) => collection.isRendered // шукає відмальовану коллекцію в масиві колекцій
+                clickedCollectionListItemElement.classList.add(
+                    "active-background"
                 );
-
-                // if (alreadyRenderedCollection) {
-                //     if (!alreadyRenderedCollection.isRemoved) {
-                //         const listItem = findListItemElementInTheListElement(
-                //             alreadyRenderedCollection.name
-                //         );
-                //         listItem.style.backgroundColor = "transparent";
-                //     }
-
-                //     remove(renderedCollectionContainer);
-                //     alreadyRenderedCollection.isRendered = false;
-                // }
-
-                if (
-                    renderedCollectionContainer &&
-                    !clickedCollection.isRendered
-                )
-                    remove(renderedCollectionContainer);
-
-                if (!clickedCollection.isRendered) {
-                    clickedCollectionListItemElement.style.backgroundColor =
-                        renderedCollectionBackgroundColor;
-                    clickedCollection.render();
-                    clickedCollection.addEventListeners();
-                    clickedCollection.isRendered = true;
-                }
+                clickedCollection.render();
+                clickedCollection.addEventListeners();
+                clickedCollection.isRendered = true;
             });
         },
     },
