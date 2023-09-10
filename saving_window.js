@@ -1,7 +1,6 @@
 import { Collection } from "./collection.js";
-import { conversionContainer } from "./conversion_container.js";
+import { conversionContainer } from "./conversion_table.js";
 import { library } from "./library.js";
-import { findListItemElementInTheListElement } from "./library.js";
 import { state, savedListsCopy } from "./state.js";
 
 export function addSavingWindow(findedColors) {

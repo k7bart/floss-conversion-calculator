@@ -1,4 +1,4 @@
-import { conversionContainer } from "./conversion_container.js";
+import { conversionContainer } from "./conversion_table.js";
 
 export class Color {
     constructor(colorName, dimensionsNumber, DMCNumber, colorDispley) {
