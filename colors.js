@@ -1,6 +1,6 @@
 import { conversionContainer } from "./conversion_table.js";
 
-export class Color {
+export default class Color {
     constructor(colorName, dimensionsNumber, DMCNumber, colorDispley) {
         this.colorName = colorName;
         this.dimensionsNumber = dimensionsNumber;
@@ -151,7 +151,6 @@ export const arrayOfColors = [
     new Color("bright orange", [12332], 608, "#FD552F"),
     new Color("dk drab brown", [15889], 610, "#6F6641"),
     new Color("ul vy dk desert sand", [15936], 632, "#936148"),
-
     new Color("vy dk beige gray", [6103], 640, "#918463"),
     new Color("dk beige gray", [15832], 642, "#B8AD92"),
     new Color("vy dk beaver gray", [18500], 645, "#515542"),
@@ -257,7 +256,6 @@ export const arrayOfColors = [
     new Color("lt gray green", [17225], 927, "#a0bebe"),
     new Color("dk antique blue", [17052, 6163, 6930], 930, "#316274"),
     new Color("md antique blue", [17051, 6164, 6931], 931, "#46728c"),
-
     new Color("lt antique blue", [13083, 17050, 6165, 6932], 932, "#80a3ba"),
     new Color("black avocado green", [16269, 16270], 934, "#314615"),
     new Color("vy dk avocado green", [16269, 6181], 936, "#52651A"),

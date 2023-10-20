@@ -1,4 +1,5 @@
-export const state = {
-    savedLists: JSON.parse(localStorage.getItem("savedLists")),
+const state = {
+    savedLists: JSON.parse(localStorage.getItem("savedLists")) ?? [],
 };
-export const savedListsCopy = [...state.savedLists];
+
+export default state;

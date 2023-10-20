@@ -1,5 +1,5 @@
 import { library } from "./library.js";
-import { state } from "./state.js";
+import state from "./state.js";
 
 export class Collection {
     constructor(name, listOfColors, convertFrom, convertTo) {

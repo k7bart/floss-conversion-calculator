@@ -1,7 +1,7 @@
 import { Collection } from "./collection.js";
 import { conversionContainer } from "./conversion_table.js";
 import { library } from "./library.js";
-import { state, savedListsCopy } from "./state.js";
+import state from "./state.js";
 
 export function addSavingWindow(findedColors) {
     renderSavingWindow();
@@ -70,7 +70,6 @@ function initializeEventListener(findedColors) {
             );
 
             state.savedLists.push(collection);
-            savedListsCopy.push(collection);
 
             localStorage.setItem(
                 `savedLists`,

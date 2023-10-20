@@ -1,5 +1,5 @@
-import { Color } from "./colors.js";
-import { state, savedListsCopy } from "./state.js";
+import Color from "./colors.js";
+import state from "./state.js";
 import { Collection, remove } from "./collection.js";
 
 export const library = {
@@ -54,7 +54,7 @@ export const library = {
                     event.target.closest("li");
 
                 // обʼєкт тицьнутої колекції
-                const clickedCollection = savedListsCopy.find(
+                const clickedCollection = state.savedLists.find(
                     (collection) =>
                         collection.name ===
                         clickedCollectionListItemElement.querySelector(
