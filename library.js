@@ -1,5 +1,4 @@
 import state from "./state.js";
-import { remove } from "./collection.js";
 
 export const library = {
     DOMElement: {
@@ -69,7 +68,7 @@ export const library = {
                         clickedCollectionListItemElement.classList.remove(
                             "active-background"
                         );
-                        remove(renderedCollectionContainer);
+                        renderedCollection.remove(renderedCollectionContainer);
                         clickedCollection.isRendered = false;
                         return;
                     }

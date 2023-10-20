@@ -53,18 +53,9 @@ export class Collection {
     }
 
     remove(collectionContainer) {
-        const collectionName =
-            collectionContainer.querySelector("h1").innerText;
-        const collection = state.savedLists.find(
-            (collection) => collection.name === collectionName
-        );
-
-        if (collection) {
-            collection.isRendered = false;
-            collectionContainer.remove();
-            document.getElementById("convert_container").style.display =
-                "block";
-        }
+        this.isRendered = false;
+        collectionContainer.remove();
+        document.getElementById("convert_container").style.display = "block";
     }
 }
 
@@ -319,7 +310,7 @@ function addEventListenerToCloseButton(collection) {
 
         if (foundItem) foundItem.classList.remove("active-background");
 
-        remove(document.getElementById("collection_container"));
+        collection.remove(document.getElementById("collection_container"));
 
         if (collection.isRemoved) {
             state.savedLists.splice(state.savedLists.indexOf(collection), 1);
@@ -329,19 +320,6 @@ function addEventListenerToCloseButton(collection) {
             );
         }
     });
-}
-
-export function remove(collectionContainer) {
-    const collectionName = collectionContainer.querySelector("h1").innerText;
-    const collection = state.savedLists.find(
-        (collection) => collection.name === collectionName
-    );
-
-    if (collection) {
-        collection.isRendered = false;
-        collectionContainer.remove();
-        document.getElementById("convert_container").style.display = "block";
-    }
 }
 
 function addEventListenerToManageButton(collection) {
