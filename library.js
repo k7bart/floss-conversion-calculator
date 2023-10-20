@@ -1,6 +1,5 @@
-import Color from "./colors.js";
 import state from "./state.js";
-import { Collection, remove } from "./collection.js";
+import { remove } from "./collection.js";
 
 export const library = {
     DOMElement: {
@@ -113,7 +112,7 @@ export const library = {
 };
 
 // TODO: rename?
-export function findListItemElementInTheListElement(name) {
+function findListItemElementInTheListElement(name) {
     const listOfCollectionsElement = document.querySelector(
         "#library_container ul"
     );
@@ -132,13 +131,8 @@ export function findListItemElementInTheListElement(name) {
     return listItemElement;
 }
 
-if (state.savedLists) {
+if (state.savedLists.length) {
     for (let list of state.savedLists) {
         library.DOMElement.renderNameOfCollection(list);
-        Object.setPrototypeOf(list, Collection.prototype);
-
-        for (let color of list.listOfColors) {
-            Object.setPrototypeOf(color, Color.prototype);
-        }
     }
 }

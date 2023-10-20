@@ -1,11 +1,10 @@
 import { Collection } from "./collection.js";
-import { conversionContainer } from "./conversion_table.js";
 import { library } from "./library.js";
 import state from "./state.js";
 
-export function addSavingWindow(findedColors) {
+export default function addSavingWindow(findedColors, convertFrom, convertTo) {
     renderSavingWindow();
-    initializeEventListener(findedColors);
+    initializeEventListener(findedColors, convertFrom, convertTo);
 }
 
 function renderSavingWindow() {
@@ -27,7 +26,7 @@ function renderSavingWindow() {
     document.body.appendChild(savingWindowElement);
 }
 
-function initializeEventListener(findedColors) {
+function initializeEventListener(findedColors, convertFrom, convertTo) {
     const savingWindowElement = document.getElementById("saving_window");
 
     savingWindowElement.addEventListener("click", function (event) {
@@ -45,11 +44,7 @@ function initializeEventListener(findedColors) {
 
         if (saveButton) {
             if (!enterNameInput.value) {
-                // TODO: change highlight
-                // enterNameInput.classList.add("animate-highlight");
-                // setTimeout(() => {
-                //     enterNameInput.classList.remove("animate-highlight");
-                // }, 1000);
+                // TODO: add highlight
                 return;
             }
 
@@ -65,8 +60,8 @@ function initializeEventListener(findedColors) {
             const collection = new Collection(
                 enterNameInput.value,
                 listOfColorsToSave,
-                conversionContainer.convertFrom,
-                conversionContainer.convertTo
+                convertFrom,
+                convertTo
             );
 
             state.savedLists.push(collection);

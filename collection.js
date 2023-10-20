@@ -51,6 +51,21 @@ export class Collection {
         addEventListenerToManageButton(this);
         addEventListenerToCloseButton(this);
     }
+
+    remove(collectionContainer) {
+        const collectionName =
+            collectionContainer.querySelector("h1").innerText;
+        const collection = state.savedLists.find(
+            (collection) => collection.name === collectionName
+        );
+
+        if (collection) {
+            collection.isRendered = false;
+            collectionContainer.remove();
+            document.getElementById("convert_container").style.display =
+                "block";
+        }
+    }
 }
 
 function renderHeader(convertFrom, convertTo) {
@@ -327,11 +342,6 @@ export function remove(collectionContainer) {
         collectionContainer.remove();
         document.getElementById("convert_container").style.display = "block";
     }
-
-    // if (!collection) {
-    //     collectionContainer.remove();
-    //     document.getElementById("convert_container").style.display = "block";
-    // }
 }
 
 function addEventListenerToManageButton(collection) {
@@ -435,8 +445,17 @@ function addEventListenerToManageButton(collection) {
                                 handleSavingEvent
                             );
 
-                            //в копії кешу знайти колекцію, додати ключ isRemoved
-                            collection.isRemoved = true;
+                            // додати ключ isRemoved
+                            // collection.isRemoved = true;
+
+                            // забираю з local storage, подумати над перезбереженням
+                            let savedLists = state.savedLists.filter(
+                                (list) => list.name !== collection.name
+                            );
+                            localStorage.setItem(
+                                `savedLists`,
+                                JSON.stringify(savedLists)
+                            );
 
                             // забрати елемент
                             library.DOMElement.removeCollectionListItemElement(
